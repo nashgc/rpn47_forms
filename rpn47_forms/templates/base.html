@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+
+<header>
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">
+            <a href="{% url 'start_page' %}"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMzJweCIgaGVpZ2h0PSIzMnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDg4LDhIMjRDMTAuNzQ1LDgsMCwxOC43NDUsMCwzMnYzNTJjMCw0LjQxOCwzLjU4Miw4LDgsOGgxODIuMjRsLTEyLjgsNjRIMTYwYy00LjQxOCwwLTgsMy41ODItOCw4djI0aC0xNnYxNmgyNDB2LTE2ICAgIGgtMTZ2LTI0YzAtNC40MTgtMy41ODItOC04LThoLTE3LjQ1M2wtMTIuOC02NEg1MDRjNC40MTgsMCw4LTMuNTgyLDgtOFYzMkM1MTIsMTguNzQ1LDUwMS4yNTUsOCw0ODgsOHogTTMyOCw0NzJoMTZ2MTZIMTY4di0xNiAgICBoMTZIMzI4eiBNMTkzLjc2LDQ1NmwxMi43ODgtNjRoOTguODkybDEyLjgsNjRIMTkzLjc2eiBNNDk2LDM3NkgxNnYtNzJoNDgwVjM3NnogTTU2LDI4OFY2NGg0MDB2MjI0SDU2eiBNNDk2LDI4OGgtMjRWNTYgICAgYzAtNC40MTgtMy41ODItOC04LThINDhjLTQuNDE4LDAtOCwzLjU4Mi04LDh2MjMySDE2VjMyYzAtNC40MTgsMy41ODItOCw4LThoNDY0YzQuNDE4LDAsOCwzLjU4Miw4LDhWMjg4eiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTI1NiwzMTJjLTEzLjI1NSwwLTI0LDEwLjc0NS0yNCwyNHMxMC43NDUsMjQsMjQsMjRzMjQtMTAuNzQ1LDI0LTI0UzI2OS4yNTUsMzEyLDI1NiwzMTJ6IE0yNTYsMzQ0Yy00LjQxOCwwLTgtMy41ODItOC04ICAgIGMwLTQuNDE4LDMuNTgyLTgsOC04YzQuNDE4LDAsOCwzLjU4Miw4LDhDMjY0LDM0MC40MTgsMjYwLjQxOCwzNDQsMjU2LDM0NHoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik04MCw4MGMtNC40MTgsMC04LDMuNTgyLTgsOHYyNGgxNlY5NmgxNlY4MEg4MHoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0yMDAsOTZoLTQ4Yy00LjQxOCwwLTgsMy41ODItOCw4djQ4YzAsNC40MTgsMy41ODIsOCw4LDhoNDhjNC40MTgsMCw4LTMuNTgyLDgtOHYtNDhDMjA4LDk5LjU4MiwyMDQuNDE4LDk2LDIwMCw5NnogICAgIE0xNjAsMTEyaDIwLjY5MkwxNjAsMTMyLjY5MlYxMTJ6IE0xOTIsMTQ0aC0yMC42OEwxOTIsMTIzLjMyVjE0NHoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxyZWN0IHg9IjIzMiIgeT0iMTA0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxyZWN0IHg9IjI2NCIgeT0iMTA0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxyZWN0IHg9IjIzMiIgeT0iMTM2IiB3aWR0aD0iMTI4IiBoZWlnaHQ9IjE2IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjAwLDE4NGgtNDhjLTQuNDE4LDAtOCwzLjU4Mi04LDh2NDhjMCw0LjQxOCwzLjU4Miw4LDgsOGg0OGM0LjQxOCwwLDgtMy41ODIsOC04di00OEMyMDgsMTg3LjU4MiwyMDQuNDE4LDE4NCwyMDAsMTg0eiAgICAgTTE5MiwyMzJoLTMydi0zMmgzMlYyMzJ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cmVjdCB4PSIyMzIiIHk9IjE5MiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cmVjdCB4PSIyNjQiIHk9IjE5MiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cmVjdCB4PSIyMzIiIHk9IjIyNCIgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxNiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="/>
+        </a>
+        </h5>
+
+        {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+            <a class="btn btn-outline-primary" href="{% url 'user_logout' %}">Выйти</a>
+            </div>
+        {% endif %}
+</header>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
