@@ -25,7 +25,7 @@ SECRET_KEY = '6sb8fp_*i2$^o_6xq_5jo9e)nsth2618b(n*7n&empu-40qyiv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user_auth.apps.UserAuthConfig',
+    'bylaw.apps.BylawConfig',
 ]
 
 MIDDLEWARE = [

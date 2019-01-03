@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
+
+{% block js %}
+{#  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
+{#  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>#}
+{#  <script src="{% static 'js/script.js' %}"></script>#}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+<div class="col-12">
+
+                        <div class="alert alert-primary" role="alert">
+                        <h5>Распоряжения форма</h5>
+                            {% if msg %}
+                          {{ msg }}
+                            {% endif %}
+                        </div>
+
+
+</div>
+
+            <div class="raspor col-12 ">
+                <form action="{% url 'bylaw_save' %}" method="POST" class="form-inline align-items-start" role="form">
+                    {% csrf_token %}
+                    <div class="col-8 pr-0">
+                        <div class="form-group form-inline col-12 mb-3">
+                            <label for="raspr_date" class="col-4">Дата распоряжения</label>
+                            {{ form.raspr_date }}
+                        </div>
+                        <div class="form-group form-inline col-12 mb-3">
+                            <label for="district" class="col-4">Район</label>
+                            {{ form.district }}
+                        </div>
+                        <div class="form-group form-inline col-12 mb-3">
+                            <label for="department" class="col-4">Отдел</label>
+                            {{ form.department }}
+                        </div>
+                        <div class="form-group form-inline col-12 mb-3">
+                            <label for="organization" class="col-4">Организация</label>
+                            {{ form.organization }}
+                        </div>
+                        <div class="form-group form-inline col-12 mb-3">
+                            <label for="inn" class="col-4">ИНН</label>
+                            {{ form.inn }}
+                        </div>
+                        <div class="form-group form-inline col-12 mb-3">
+                            <label for="performer" class="col-4">Исполнитель</label>
+                            {{ form.performer }}
+                        </div>
+                        <div class="form-group form-inline col-12 mb-3">
+                            <label for="check_type" class="col-4">Вид проверки</label>
+                            {{ form.check_type }}
+                        </div>
+                        <div class="form-group form-inline col-12 mb-3">
+                            <label for="date_proved" class="col-4">Дата проведения</label>
+                            {{ form.date_proved }}
+                        </div>
+                    </div>
+                    <div class="col-4 pl-0">
+                        <div class="form-group form-inline col-12 mb-3">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">№</div>
+                            </div>
+                            <input type="text" class="form-control col-10" id="raspr_date" placeholder="78-___-____/28-___-2019" readonly>
+                        </div>
+                        <div class="form-group form-inline col-12 mb-3">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">@</div>
+                            </div>
+                            <input type="text" class="form-control col-10" id="raspr_date" value="{{ user.username }} " readonly>
+                        </div>
+                        <div class="col-12 text-center">
+                            <input type="submit" class="btn btn-primary" value="Сохранить">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+    $(document).ready(function () {
+        $("#inn").autocomplete({
+            source: function (request, response) {
+                var form = $(this);
+                $.ajax({
+                    url: "{% url 'get_inn' %}",
+                    processData: true,
+                    type: 'POST',
+                    data: {
+                        search: request.term,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                    },
+                    success: function (data) {
+                        {#console.log(data)#}
+                        response(data);
+                    },
+
+                });
+            },
+            select: function (event, ui) {
+                {#console.log(ui.item)#}
+                $('#inn').val(ui.item.label)
+                $('#organization').val(ui.item.org)
+            }
+        });
+    });
+
+
+
+
+
+</script>
+
+{% endblock %}
