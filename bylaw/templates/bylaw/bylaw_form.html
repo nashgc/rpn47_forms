@@ -32,6 +32,7 @@
                 <form action="{% url 'bylaw_save' %}" method="POST" class="form-inline align-items-start" role="form">
                     {% csrf_token %}
                     <div class="col-8 pr-0">
+
                         <div class="form-group form-inline col-12 mb-3">
                             <label for="raspr_date" class="col-4">Дата распоряжения</label>
                             {{ form.raspr_date }}
@@ -90,8 +91,9 @@
     </div>
 
 <script>
- var url = '{% url 'get_inn' %}'
- var csrf_token = '{{ csrf_token }}'
+    var url = '{% url 'get_inn' %}'
+    var csrf_token = '{{ csrf_token }}'
+    var gdn = '{{ gdn }}'
 </script>
 
 {% endblock %}

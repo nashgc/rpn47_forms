@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from .form import BylawForm
-from .models import BylawModel
+from .models import BylawModel, GlobalDocNumber
 
 import json
 
@@ -11,16 +11,20 @@ import json
 
 @login_required
 def bylaw_form(request):
-    form = BylawForm(initial={'who_created': request.user.username, 'raspr_num': '78-___-____/28-___-2019'})
-    return render(request, 'bylaw/bylaw_form.html', {'form': form})
+    gdn = GlobalDocNumber.objects.get(pk=1)
+    form = BylawForm(initial={'who_created': request.user.username})
+    return render(request, 'bylaw/bylaw_form.html', {'form': form, 'gdn': gdn})
 
 
 @login_required()
 def bylaw_save(request):
-    form = BylawForm(initial={'who_created': request.user.username, 'raspr_num': '78-___-____/28-___-2019'})
+    form = BylawForm(initial={'who_created': request.user.username})
     if request.method == 'POST':
         form = BylawForm(request.POST)
         if form.is_valid():
+            gdn = GlobalDocNumber.objects.get(pk=1)
+            gdn.gdn += 1
+            gdn.save()
             form.save()
             return render(request, 'bylaw/bylaw_form.html',
                           {'msg': 'Спасибо за уделённое время! Ваш отзыв успешно отправлен.'})

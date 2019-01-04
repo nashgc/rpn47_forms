@@ -21,5 +21,5 @@ from .views import bylaw_form, get_inn, bylaw_save
 urlpatterns = [
     path('', bylaw_form, name='bylaw_form'),
     path('get_inn', get_inn, name='get_inn'),
-    path('bylaw_save', bylaw_save, name='bylaw_save'),
+    path('/bylaw_save', bylaw_save, name='bylaw_save'),
 ]

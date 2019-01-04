@@ -2,6 +2,16 @@ from django.db import models
 
 # Create your models here.
 
+class GlobalDocNumber(models.Model):
+    gdn = models.IntegerField(verbose_name='Глобальный номер документов')
+
+    def __str__(self):
+        return str(self.gdn)
+
+    class Meta:
+        verbose_name_plural = "Глобальный номер документов"
+
+
 class DistrictsMenu(models.Model):
     district = models.CharField(max_length=255, verbose_name='Район')
 
