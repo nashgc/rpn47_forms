@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .form import BylawForm
 from .models import BylawModel
@@ -10,11 +11,13 @@ import json
 
 @login_required
 def bylaw_form(request):
-    return render(request, 'bylaw/bylaw_form.html', {'form': BylawForm})
+    form = BylawForm(initial={'who_created': request.user.username, 'raspr_num': '78-___-____/28-___-2019'})
+    return render(request, 'bylaw/bylaw_form.html', {'form': form})
+
 
 @login_required()
 def bylaw_save(request):
-    form = BylawForm
+    form = BylawForm(initial={'who_created': request.user.username, 'raspr_num': '78-___-____/28-___-2019'})
     if request.method == 'POST':
         form = BylawForm(request.POST)
         if form.is_valid():
@@ -27,22 +30,18 @@ def bylaw_save(request):
     return render(request, 'bylaw/bylaw_form.html', {'form': form})
 
 
-# @login_required
+@login_required
 def get_inn(request):
     if request.method == "POST":
         request = request.POST
-        print('First req - '.format(request))
         # print(request['search'])
         iins = BylawModel.objects.all().filter(inn__icontains=request['search'])
         results = []
         for inn in iins:
-            print(inn)
             place_json = {}
             place_json['label'] = inn.inn
             place_json['org'] = inn.organization
             results.append(place_json)
-        print('JSON - '.format(results))
         data = json.dumps(results)
-        print('DATA -'.format(data))
         mimetype = "application/json"
         return HttpResponse(data, mimetype)
