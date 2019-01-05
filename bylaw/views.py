@@ -21,7 +21,7 @@ def bylaw_form(request, msg='', raspr_num_1='', raspr_num_2=''):
 
 
 
-@login_required()
+@login_required
 def bylaw_save(request):
     form = BylawForm(initial={'who_created': request.user.username})
     if request.method == 'POST':
@@ -33,13 +33,16 @@ def bylaw_save(request):
             raspr_num = form.cleaned_data['raspr_num'][:]
             raspr_num = raspr_num.split('/')
             form.save()
-            return redirect('bylaw_form_pa',
-                            msg='Распоряжение успешно сохранено.', raspr_num_1=raspr_num[0], raspr_num_2=raspr_num[1])
+            return bylaw_form(request, msg='Распоряжение успешно сохранено.',
+                              raspr_num_1=raspr_num[0], raspr_num_2=raspr_num[1])
+            # return redirect('bylaw_form_pa',
+            #                 msg='Распоряжение успешно сохранено.', raspr_num_1=raspr_num[0], raspr_num_2=raspr_num[1])
             # return render(request, 'bylaw/bylaw_form.html',
             #               {'msg': 'Спасибо за уделённое время! Ваш отзыв успешно отправлен.'})
         else:
-            return redirect('bylaw_form_pa',
-                            msg='Форма была заполненна некорректно или произошла ошибка. Попробуйте ещё раз')
+            return bylaw_form(request, msg='Форма была заполненна некорректно или произошла ошибка. Попробуйте ещё раз')
+            # return redirect('bylaw_form_pa',
+            #                 msg='Форма была заполненна некорректно или произошла ошибка. Попробуйте ещё раз')
             # return render(request, 'bylaw/bylaw_form.html',
             #               {'msg': 'Произошла ошибка, обновите страницу и попробуйте снова.'})
     return render(request, 'bylaw/bylaw_form.html', {'form': form})

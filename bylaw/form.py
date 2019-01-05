@@ -1,4 +1,4 @@
-from django.forms import ModelForm, ModelChoiceField, DateInput, Select, TextInput
+from django.forms import ModelForm, ModelChoiceField, DateInput, Select, TextInput, DateTimeField
 from .models import BylawModel, DistrictsMenu, DepartmentsMenu, PerformersMenu, CheckTypesMenu
 
 
