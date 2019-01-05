@@ -18,10 +18,13 @@
     <div class="container">
 <div class="col-12">
 
-                        <div class="alert alert-primary" role="alert">
-                        <h5>Распоряжения форма</h5>
-                            {% if msg %}
-                          {{ msg }}
+                        <div class="alert alert-primary text-center" role="alert">
+                        <h4>Распоряжения форма</h4>
+                            {% if 'msg' %}
+                           <h5>  {{ msg }}</h5>
+                            {% endif %}
+                            {% if 'raspr_num_1' and 'raspr_num_2' %}
+                           <h5>  {{ raspr_num_1 }} {{ raspr_num_2 }}</h5>
                             {% endif %}
                         </div>
 
