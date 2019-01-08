@@ -3,9 +3,17 @@ from django.contrib import admin
 from .models import BylawModel, CheckTypesMenu, DepartmentsMenu, DistrictsMenu, PerformersMenu, GlobalDocNumber
 # Register your models here.
 
-admin.site.register(BylawModel)
-admin.site.register(CheckTypesMenu)
-admin.site.register(DepartmentsMenu)
-admin.site.register(DistrictsMenu)
-admin.site.register(PerformersMenu)
-admin.site.register(GlobalDocNumber)
+
+# Register your models here.
+
+
+class BylawAdmin(admin.ModelAdmin):
+    list_display = ('raspr_date', 'district', 'department', 'organization', 'inn', 'performer', 'check_type',
+                    'date_proved', 'raspr_num', 'who_created')
+    list_filter = ('raspr_date', 'date_proved')
+    search_fields = ('inn', 'organization', 'raspr_num')
+
+
+bylaw_models = [CheckTypesMenu, DepartmentsMenu, DistrictsMenu, PerformersMenu, GlobalDocNumber]
+admin.site.register(BylawModel,BylawAdmin)
+admin.site.register(bylaw_models)

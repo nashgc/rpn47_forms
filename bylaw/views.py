@@ -13,9 +13,10 @@ import json
 def bylaw_form(request, msg='', raspr_num_1='', raspr_num_2=''):
     gdn = GlobalDocNumber.objects.get(pk=1)
     form = BylawForm(initial={'who_created': request.user.username})
-    if raspr_num_1:
+    if raspr_num_1 and raspr_num_2:
+        raspr_num = '{}/{}'.format(raspr_num_1, raspr_num_2)
         return render(request, 'bylaw/bylaw_form.html',
-                      {'form': form, 'gdn': gdn, 'msg': msg, 'raspr_num_1': raspr_num_1, 'raspr_num_2': raspr_num_2})
+                      {'form': form, 'gdn': gdn, 'msg': msg, 'raspr_num': raspr_num})
     else:
         return render(request, 'bylaw/bylaw_form.html', {'form': form, 'gdn': gdn, 'msg': msg})
 
@@ -28,23 +29,27 @@ def bylaw_save(request):
         form = BylawForm(request.POST)
         if form.is_valid():
             gdn = GlobalDocNumber.objects.get(pk=1)
-            gdn.gdn += 1
-            gdn.save()
             raspr_num = form.cleaned_data['raspr_num'][:]
             raspr_num = raspr_num.split('/')
-            form.save()
+            bylaw = form.save(commit=False)
+            if not bylaw.district:
+                bylaw.district = 'Не заполненно'
+            if not bylaw.department:
+                bylaw.department = 'Не заполненно'
+            if not bylaw.performer:
+                bylaw.performer = 'Не заполненно'
+            if not bylaw.check_type:
+                bylaw.check_type = 'Не заполненно'
+            raspr_num_list = bylaw.raspr_num.split('-')
+            raspr_num_list[3] = str(gdn).zfill(5)
+            bylaw.raspr_num = '-'.join(raspr_num_list)
+            bylaw.save()
+            gdn.gdn += 1
+            gdn.save()
             return bylaw_form(request, msg='Распоряжение успешно сохранено.',
                               raspr_num_1=raspr_num[0], raspr_num_2=raspr_num[1])
-            # return redirect('bylaw_form_pa',
-            #                 msg='Распоряжение успешно сохранено.', raspr_num_1=raspr_num[0], raspr_num_2=raspr_num[1])
-            # return render(request, 'bylaw/bylaw_form.html',
-            #               {'msg': 'Спасибо за уделённое время! Ваш отзыв успешно отправлен.'})
         else:
             return bylaw_form(request, msg='Форма была заполненна некорректно или произошла ошибка. Попробуйте ещё раз')
-            # return redirect('bylaw_form_pa',
-            #                 msg='Форма была заполненна некорректно или произошла ошибка. Попробуйте ещё раз')
-            # return render(request, 'bylaw/bylaw_form.html',
-            #               {'msg': 'Произошла ошибка, обновите страницу и попробуйте снова.'})
     return render(request, 'bylaw/bylaw_form.html', {'form': form})
 
 

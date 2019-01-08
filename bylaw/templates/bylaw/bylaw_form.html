@@ -4,17 +4,17 @@
 {% block css %}
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://ankideckmaker.ru/static/out/css/datepicker.css">
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <link rel="stylesheet" href="{% static 'css/datepicker.css' %}">
 {% endblock %}
 
 {% block js %}
 {#  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
 {#  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>#}
-    <script src="{% static 'js/datepicker.min.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="http://ankideckmaker.ru/static/out/js/datepicker.min.js"></script>
+    <script src="http://ankideckmaker.ru/static/out/js/script.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -26,8 +26,8 @@
                 {% if 'msg' %}
                     <h5>  {{ msg }}</h5>
                 {% endif %}
-                {% if 'raspr_num_1' and 'raspr_num_2' %}
-                    <h5>  {{ raspr_num_1 }} {{ raspr_num_2 }}</h5>
+                {% if 'raspr_num' %}
+                    <h5>  {{ raspr_num }}</h5>
                 {% endif %}
             </div>
         </div>

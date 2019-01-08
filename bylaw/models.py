@@ -92,15 +92,18 @@ class BylawModel(models.Model):
 
 
     raspr_date = models.DateField()
-    district = models.CharField(max_length=255, blank=True)
-    department = models.CharField(max_length=255, blank=True)
-    organization = models.CharField(max_length=255, blank=True)
+    district = models.CharField(max_length=255, default='Unfilled')
+    department = models.CharField(max_length=255, default='Unfilled')
+    organization = models.CharField(max_length=255, default='Unfilled')
     inn = models.IntegerField()
-    performer = models.CharField(max_length=255, blank=True)
-    check_type = models.CharField(max_length=255, blank=True)
-    date_proved = models.DateField(blank=True)
-    raspr_num = models.CharField(max_length=255, blank=True)
-    who_created = models.CharField(max_length=255, blank=True)
+    performer = models.CharField(max_length=255, default='Unfilled')
+    check_type = models.CharField(max_length=255)
+    date_proved = models.DateField()
+    raspr_num = models.CharField(max_length=255, unique=True)
+    who_created = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.inn)
 
     class Meta:
         verbose_name_plural = "Распоряжение форма"

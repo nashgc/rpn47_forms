@@ -1,17 +1,34 @@
-from django.forms import ModelForm, ModelChoiceField, DateInput, Select, TextInput, DateTimeField
+from django.forms import ModelForm, ModelChoiceField, DateInput, Select, TextInput, DateField, CharField
 from .models import BylawModel, DistrictsMenu, DepartmentsMenu, PerformersMenu, CheckTypesMenu
 
 
 # TODO: disable required fields
 class BylawForm(ModelForm):
-    district = ModelChoiceField(queryset=DistrictsMenu.objects.all(), to_field_name="district",
-                                widget=Select(attrs={'id': "district", 'class': 'form-control col-6', 'required':"false"}))
-    department = ModelChoiceField(queryset=DepartmentsMenu.objects.all(), to_field_name="department",
-                                  widget=Select(attrs={'id':"department", 'class': "form-control col-6", 'required':"false"}))
-    performer = ModelChoiceField(queryset=PerformersMenu.objects.all(), to_field_name="performer",
-                                 widget=Select(attrs={'id': "performer", 'class': 'form-control col-6', 'required':"false"}))
-    check_type = ModelChoiceField(queryset=CheckTypesMenu.objects.all(), to_field_name="check_type",
-                                  widget=Select(attrs={'id': "check_type", 'class': 'form-control col-6', 'required':"false"}))
+    raspr_date = DateField(required=False,
+                           widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "raspr_date"}))
+
+    district = ModelChoiceField(required=False, queryset=DistrictsMenu.objects.all(), to_field_name="district",
+                                widget=Select(attrs={'id': "district", 'class': 'form-control col-6'}))
+
+    department = ModelChoiceField(required=False, queryset=DepartmentsMenu.objects.all(), to_field_name="department",
+                                  widget=Select(attrs={'id':"department", 'class': "form-control col-6"}))
+
+    organization = CharField(required=False, widget=TextInput(
+                attrs={'type': "text", 'class': "form-control col-6 org", 'id': "organization"}))
+
+    inn = CharField(required=True, widget=TextInput(
+                attrs={'type': "text", 'class': "form-control col-6", 'id': "inn"}))
+
+    performer = ModelChoiceField(required=False, queryset=PerformersMenu.objects.all(), to_field_name="performer",
+                                 widget=Select(attrs={'id': "performer", 'class': 'form-control col-6'}))
+
+    check_type = ModelChoiceField(required=False, queryset=CheckTypesMenu.objects.all(), to_field_name="check_type",
+                                  widget=Select(attrs={'id': "check_type", 'class': 'form-control col-6'}))
+
+    date_proved = DateField(required=False,
+                        widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "date_proved"}))
+
+
 
 
     class Meta:
@@ -20,18 +37,18 @@ class BylawForm(ModelForm):
                   'performer', 'check_type', 'date_proved', 'raspr_num', 'who_created'
         ]
         widgets = {
-            'raspr_date': DateInput(
-                attrs={'type': "text", 'class': "form-control col-6", 'id':"raspr_date", 'required':"false"}
-            ),
-            'organization': TextInput(
-                attrs={'type': "text", 'class': "form-control col-6 org", 'id': "organization", 'required':"false"}
-            ),
-            'inn': TextInput(
-                attrs={'type': "text", 'required':"gfggfgfgfg", 'class': "form-control col-6", 'id': "inn"}
-            ),
-            'date_proved': DateInput(
-                attrs={'type': "text", 'class': "form-control col-6", 'id': "date_proved", 'required':"false"}
-            ),
+            # 'raspr_date': DateInput(
+            #     attrs={'type': "text", 'class': "form-control col-6", 'id':"raspr_date", 'required':"false"}
+            # ),
+            # 'organization': TextInput(
+            #     attrs={'type': "text", 'class': "form-control col-6 org", 'id': "organization", 'required':"false"}
+            # ),
+            # 'inn': TextInput(
+            #     attrs={'type': "text", 'required':"gfggfgfgfg", 'class': "form-control col-6", 'id': "inn"}
+            # ),
+            # 'date_proved': DateInput(
+            #     attrs={'type': "text", 'class': "form-control col-6", 'id': "date_proved", 'required':"false"}
+            # ),
             'raspr_num': TextInput(
                 attrs={'type': "text", 'class': "form-control col-10", 'id': "raspr_num", 'readonly': ''}
             ),
