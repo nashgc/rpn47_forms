@@ -98,7 +98,8 @@ class BylawModel(models.Model):
     inn = models.IntegerField()
     performer = models.CharField(max_length=255, default='Unfilled')
     check_type = models.CharField(max_length=255)
-    date_proved = models.DateField()
+    date_proved_c = models.DateField()
+    date_proved_po = models.DateField()
     raspr_num = models.CharField(max_length=255, unique=True)
     who_created = models.CharField(max_length=255)
 

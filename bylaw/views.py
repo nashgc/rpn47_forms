@@ -41,7 +41,7 @@ def bylaw_save(request):
             if not bylaw.check_type:
                 bylaw.check_type = 'Не заполненно'
             raspr_num_list = bylaw.raspr_num.split('-')
-            raspr_num_list[3] = str(gdn).zfill(5)
+            raspr_num_list[3] = str(gdn).zfill(4)
             bylaw.raspr_num = '-'.join(raspr_num_list)
             bylaw.save()
             gdn.gdn += 1

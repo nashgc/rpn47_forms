@@ -25,8 +25,11 @@ class BylawForm(ModelForm):
     check_type = ModelChoiceField(required=False, queryset=CheckTypesMenu.objects.all(), to_field_name="check_type",
                                   widget=Select(attrs={'id': "check_type", 'class': 'form-control col-6'}))
 
-    date_proved = DateField(required=False,
-                        widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "date_proved"}))
+    date_proved_c = DateField(required=False,
+                        widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "date_proved_c"}))
+
+    date_proved_po = DateField(required=False,
+                        widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "date_proved_po"}))
 
 
 
@@ -34,7 +37,7 @@ class BylawForm(ModelForm):
     class Meta:
         model = BylawModel
         fields = ['raspr_date', 'district', 'department', 'organization', 'inn',
-                  'performer', 'check_type', 'date_proved', 'raspr_num', 'who_created'
+                  'performer', 'check_type', 'date_proved_c', 'date_proved_po', 'raspr_num', 'who_created'
         ]
         widgets = {
             # 'raspr_date': DateInput(

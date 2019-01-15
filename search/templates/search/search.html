@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    {% if 'raspr' %}
+        <div class="container-fluid">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th class="th-sm">Дата распор
+                    </th>
+                    <th class="th-sm">Район
+                    </th>
+                    <th class="th-sm">Отдел
+                    </th>
+                    <th class="th-sm">Инн
+                    </th>
+                    <th class="th-sm">Организация
+                    </th>
+                    <th class="th-sm">Исполнитель
+                    </th>
+                    <th class="th-sm">Вид проверки
+                    </th>
+                    <th class="th-sm">Дата проведения c
+                    </th>
+                    <th class="th-sm">Дата проведения по
+                    </th>
+                    <th class="th-sm">Дата распоряжения
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for r in raspr %}
+                <tr>
+                    <td>{{ r.raspr_date }}</td>
+                    <td>{{ r.district }}</td>
+                    <td>{{ r.department }}</td>
+                    <td>{{ r.organization }}</td>
+                    <td>{{ r.inn }}</td>
+                    <td>{{ r.performer }}</td>
+                    <td>{{ r.check_type }}</td>
+                    <td>{{ r.date_proved_c }}</td>
+                    <td>{{ r.date_proved_po }}</td>
+                    <td>{{ r.raspr_num }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th class="th-sm">Дата распор
+                    </th>
+                    <th class="th-sm">Район
+                    </th>
+                    <th class="th-sm">Отдел
+                    </th>
+                    <th class="th-sm">Инн
+                    </th>
+                    <th class="th-sm">Организация
+                    </th>
+                    <th class="th-sm">Исполнитель
+                    </th>
+                    <th class="th-sm">Вид проверки
+                    </th>
+                    <th class="th-sm">Дата проведения c
+                    </th>
+                   <th class="th-sm">Дата проведения по
+                    </th>
+                    <th class="th-sm">Дата распоряжения
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

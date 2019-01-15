@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user_auth.apps.UserAuthConfig',
     'bylaw.apps.BylawConfig',
+    'search.apps.SearchConfig',
 ]
 
 MIDDLEWARE = [

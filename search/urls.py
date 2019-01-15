@@ -16,13 +16,9 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import bylaw_form, get_inn, bylaw_save
+from .views import search
 
 urlpatterns = [
-    # path('/<str:msg>/<slug:raspr_num_1>/<slug:raspr_num_2>', bylaw_form, name='bylaw_form_pa'),
-    # path('/<str:msg>/', bylaw_form, name='bylaw_form_pa'),
-    path('/get_inn', get_inn, name='get_inn'),
-    path('/bylaw_save', bylaw_save, name='bylaw_save'),
-    path('', bylaw_form, name='bylaw_form'),
+    path('', search, name='search'),
 ]
 
