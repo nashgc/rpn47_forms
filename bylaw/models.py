@@ -111,18 +111,18 @@ class BylawModel(models.Model):
 
 
     raspr_date = models.DateField()
-    district = models.CharField(max_length=255, default='Unfilled')
-    department = models.CharField(max_length=255, default='Unfilled')
-    organization = models.CharField(max_length=255, default='Unfilled')
+    district = models.CharField(max_length=255, blank=True)
+    department = models.CharField(max_length=255, blank=True)
+    organization = models.CharField(max_length=255, blank=True)
     inn = models.IntegerField()
-    performer = models.CharField(max_length=255, default='Unfilled')
-    check_type = models.CharField(max_length=255)
+    performer = models.CharField(max_length=255, blank=True)
+    check_type = models.CharField(max_length=255, blank=True)
     date_proved_c = models.DateField()
     date_proved_po = models.DateField()
-    base = models.CharField(max_length=255, default='Unfilled')
-    lab_security = models.CharField(max_length=255, default='Unfilled')
+    base = models.CharField(max_length=255, blank=True)
+    lab_security = models.CharField(max_length=255, blank=True)
     raspr_num = models.CharField(max_length=255, unique=True)
-    who_created = models.CharField(max_length=255)
+    who_created = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return str(self.inn)
