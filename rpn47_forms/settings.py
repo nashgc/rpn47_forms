@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'user_auth.apps.UserAuthConfig',
     'bylaw.apps.BylawConfig',
     'search.apps.SearchConfig',
+    'ordinance.apps.OrdinanceConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://ankideckmaker.ru/static/out/css/datepicker.css">
+{% endblock %}
+
+{% block js %}
+{#  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
+{#  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>#}
+    <script src="http://ankideckmaker.ru/static/out/js/datepicker.min.js"></script>
+    <script src="http://ankideckmaker.ru/static/out/js/script.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="col-12">
+            <div class="alert alert-primary text-center" role="alert">
+                <h4>Пост форма</h4>
+                {% if msg %}
+                    <h5>  {{ msg }}</h5>
+                {% endif %}
+                {% if raspr_num %}
+                    <h5>  {{ raspr_num }}</h5>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="raspor col-12 ">
+            <form action="{% url 'bylaw_save' %}" method="POST" class="form-inline align-items-start" role="form">
+                {% csrf_token %}
+                <div class="col-8 pr-0">
+
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="raspr_date" class="col-4">Дата постановления</label>
+                        {{ form.raspr_date }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="district" class="col-4">Дата оплаты</label>
+                        {{ form.district }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="department" class="col-4">Проссрочка</label>
+                        {{ form.department }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="inn" class="col-4">Фактическая дата оплаты</label>
+                        {{ form.inn }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="organization" class="col-4">Дата поступления квитанции в ТО</label>
+                        {{ form.organization }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="performer" class="col-4">Организация</label>
+                        {{ form.performer }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="check_type" class="col-4">ФИО Должностного лица</label>
+                        {{ form.check_type }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_c" class="col-4">Паспартные данные</label>
+                        {{ form.date_proved_c }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">ИНН</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Дата составления протокола</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Вид проверки</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Исполнитель</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Физическое лицо или Юридическое лицо</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Вид деятельности</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Вид нарушения</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Статья КоАП РФ</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Сумма штрафа</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Оплачено</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">Долг</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">не взыскивается по решению суда</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">КБК</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">КПП</label>
+                        {{ form }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="date_proved_po" class="col-4">УИН сформирован</label>
+                        {{ form }}
+                    </div>
+                </div>
+
+                <div class="col-4 pl-0">
+                    <div class="form-group form-inline col-12 mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">№</div>
+                        </div>
+                        {{ form.raspr_num }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">@</div>
+                        </div>
+                        {{ form.who_created }}
+                    </div>
+                    <div class="col-12 text-center">
+                        <input type="submit" class="btn btn-primary" value="Сохранить">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    </div>
+
+<script>
+    var url = '{% url 'get_inn' %}'
+    var gdn = '{{ gdn }}'
+</script>
+
+{% endblock %}
