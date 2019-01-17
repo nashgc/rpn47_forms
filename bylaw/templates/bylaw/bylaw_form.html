@@ -5,9 +5,6 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="http://ankideckmaker.ru/static/out/css/datepicker.css">
-    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 {% endblock %}
 
 {% block js %}
@@ -23,10 +20,10 @@
         <div class="col-12">
             <div class="alert alert-primary text-center" role="alert">
                 <h4>Распоряжения форма</h4>
-                {% if 'msg' %}
+                {% if msg %}
                     <h5>  {{ msg }}</h5>
                 {% endif %}
-                {% if 'raspr_num' %}
+                {% if raspr_num %}
                     <h5>  {{ raspr_num }}</h5>
                 {% endif %}
             </div>
@@ -102,7 +99,6 @@
 
 <script>
     var url = '{% url 'get_inn' %}'
-    var csrf_token = '{{ csrf_token }}'
     var gdn = '{{ gdn }}'
 </script>
 
