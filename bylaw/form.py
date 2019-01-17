@@ -1,5 +1,5 @@
 from django.forms import ModelForm, ModelChoiceField, DateInput, Select, TextInput, DateField, CharField
-from .models import BylawModel, DistrictsMenu, DepartmentsMenu, PerformersMenu, CheckTypesMenu
+from .models import BylawModel, DistrictsMenu, DepartmentsMenu, PerformersMenu, CheckTypesMenu, LabSecurityMenu, BaseMenu
 
 
 # TODO: disable required fields
@@ -31,13 +31,20 @@ class BylawForm(ModelForm):
     date_proved_po = DateField(required=False,
                         widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "date_proved_po"}))
 
+    base = ModelChoiceField(required=False, queryset=BaseMenu.objects.all(), to_field_name="base",
+                                  widget=Select(attrs={'id': "base", 'class': 'form-control col-6'}))
+
+    lab_security = ModelChoiceField(required=False, queryset=LabSecurityMenu.objects.all(), to_field_name="lab_security",
+                                  widget=Select(attrs={'id': "lab_security", 'class': 'form-control col-6'}))
+
 
 
 
     class Meta:
         model = BylawModel
         fields = ['raspr_date', 'district', 'department', 'organization', 'inn',
-                  'performer', 'check_type', 'date_proved_c', 'date_proved_po', 'raspr_num', 'who_created'
+                  'performer', 'check_type', 'date_proved_c', 'date_proved_po',
+                  'base', 'lab_security', 'raspr_num', 'who_created'
         ]
         widgets = {
             # 'raspr_date': DateInput(

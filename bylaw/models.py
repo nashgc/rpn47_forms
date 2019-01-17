@@ -51,6 +51,25 @@ class CheckTypesMenu(models.Model):
     class Meta:
         verbose_name_plural = "Тип проверок меню"
 
+class BaseMenu(models.Model):
+    base = models.CharField(max_length=255, verbose_name='Базис')
+
+    def __str__(self):
+        return self.base
+
+    class Meta:
+        verbose_name_plural = "Базис меню"
+
+
+class LabSecurityMenu(models.Model):
+    lab_security = models.CharField(max_length=255, verbose_name='Лабораторное обеспечение')
+
+    def __str__(self):
+        return self.lab_security
+
+    class Meta:
+        verbose_name_plural = "Лабораторное обеспечение меню"
+
 
 class BylawModel(models.Model):
 
@@ -100,6 +119,8 @@ class BylawModel(models.Model):
     check_type = models.CharField(max_length=255)
     date_proved_c = models.DateField()
     date_proved_po = models.DateField()
+    base = models.CharField(max_length=255)
+    lab_security = models.CharField(max_length=255)
     raspr_num = models.CharField(max_length=255, unique=True)
     who_created = models.CharField(max_length=255)
 
