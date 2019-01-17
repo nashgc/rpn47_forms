@@ -114,7 +114,7 @@ class BylawModel(models.Model):
     district = models.CharField(max_length=255, blank=True, null=True)
     department = models.CharField(max_length=255, blank=True, null=True)
     organization = models.CharField(max_length=255, blank=True, null=True)
-    inn = models.IntegerField(db_index=)
+    inn = models.IntegerField(db_index=True)
     performer = models.CharField(max_length=255, blank=True, null=True)
     check_type = models.CharField(max_length=255, blank=True, null=True)
     date_proved_c = models.DateField()
