@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('ordinance', include('ordinance.urls')),
+    path('ordinance_form', include('ordinance.urls')),
     path('bylaw_form', include('bylaw.urls')),
     path('search', include('search.urls')),
     path('admin/', admin.site.urls),

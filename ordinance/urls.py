@@ -16,7 +16,8 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import ordinance_form, get_inn, ordinance_save
+from .views import ordinance_form, ordinance_save
+    # , get_inn,
 
 urlpatterns = [
     # path('/<str:msg>/<slug:raspr_num_1>/<slug:raspr_num_2>', bylaw_form, name='bylaw_form_pa'),

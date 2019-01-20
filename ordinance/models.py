@@ -2,46 +2,50 @@ from django.db import models
 
 # Create your models here.
 
+class FizOrUrMenu(models.Model):
+    fiz_or_ur = models.CharField(max_length=255, verbose_name='Физ. или Юр. лицо')
+
+    def __str__(self):
+        return self.fiz_or_ur
+
+    class Meta:
+        verbose_name_plural = "Физ. или Юр. лицо меню"
+
+
+class ActivityTypeMenu(models.Model):
+    activity_type = models.CharField(max_length=255, verbose_name='Вид деятельности')
+
+    def __str__(self):
+        return self.activity_type
+
+    class Meta:
+        verbose_name_plural = "Вид деятельности меню"
+
+
+class ViolationTypeMenu(models.Model):
+    violation_type = models.CharField(max_length=255, verbose_name='Вид нарушения')
+
+    def __str__(self):
+        return self.violation_type
+
+    class Meta:
+        verbose_name_plural = "Вид нарушения меню"
+
+
+class KoapArticleMenu(models.Model):
+    koap_article = models.CharField(max_length=255, verbose_name='Статья КоАП РФ')
+
+    def __str__(self):
+        return self.koap_article
+
+    class Meta:
+        verbose_name_plural = "Статья КоАП РФ меню"
+
 
 class OrdinanceModel(models.Model):
 
-    # district_list = (
-    #     ('Московский', 'Московский'),
-    #     ('Выборгский', 'Выборгский'),
-    #     ('Невский', 'Невский'),
-    #     ('Адмиралтейский', 'Адмиралтейский'),
-    #     ('Приморский', 'Приморский'),
-    #     ('Кировский', 'Кировский'),
-    #     ('Управление', 'Управление'),
-    # )
-    #
-    # department_list = (
-    #     ('01_Орготдел', '01_Орготдел'),
-    #     ('03_ЗПП', '03_ЗПП'),
-    #     ('04_Транспорт', '04_Транспорт'),
-    #     ('05_Коммуналка', '05_Коммуналка'),
-    #     ('06_Труд', '06_Труд'),
-    #     ('07_Дети', '07_Дети'),
-    #     ('08_Питание', '08_Питание'),
-    #     ('09_Эпид', '09_Эпид'),
-    #     ('10_Жалобы', '10_Жалобы'),
-    #     ('11_Радиологи', '11_Радиологи'),
-    #     ('12_Бухгалтерия', '12_Бухгалтерия'),
-    #     ('15_Юристы', '15_Юристы'),
-    # )
-    #
-    # performer_list = (
-    #     ('РоманцоваВ.Л.', 'РоманцоваВ.Л.'),
-    #     ('ЗаботинаИ.А.', 'ЗаботинаИ.А.'),
-    # )
-    #
-    # check_type_list = (
-    #     ('Плановая_выездная', 'Плановая_выездная'),
-    #     ('Внеплановая_выездная', 'Внеплановая_выездная'),
-    #     ('Внеплановая_документарная', 'Внеплановая_документарная'),
-    # )
 
-
+    department = models.CharField(max_length=255, default='Unfilled')
     ordinance_date = models.DateField()
     pay_date = models.DateField()
     expiration = models.IntegerField()

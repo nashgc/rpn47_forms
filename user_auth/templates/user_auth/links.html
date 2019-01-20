@@ -1,16 +1,18 @@
 
 {% if user.is_authenticated %}
     <div class="row">
-    <div class="container col-md-5 col-md-offset-5 mt-5">
-        <ul class="list-group text-center">
-            <a href="{% url 'bylaw_form' %}">
-          <li class="list-group-item list-group-item-action">Распоряжения</li>
-          </a>
+        <div class="container col-md-5 col-md-offset-5 mt-5">
+            <ul class="list-group text-center">
+                <a href="{% url 'bylaw_form' %}">
+                    <li class="list-group-item list-group-item-action">Распоряжения</li>
+                </a>
+                <a href="{% url 'ordinance_form' %}">
+                    <li class="list-group-item list-group-item-action">Пост</li>
+                </a>
                 <li class="list-group-item list-group-item-action">Здесь будет ещё одна форма</li>
-          <li class="list-group-item list-group-item-action">Здесь будет ещё одна форма</li>
-          <li class="list-group-item list-group-item-action">Здесь будет ещё одна форма</li>
-          <li class="list-group-item list-group-item-action">Здесь будет ещё одна форма</li>
-        </ul>
-    </div>
+                <li class="list-group-item list-group-item-action">Здесь будет ещё одна форма</li>
+                <li class="list-group-item list-group-item-action">Здесь будет ещё одна форма</li>
+            </ul>
+        </div>
     </div>
 {% endif %}
