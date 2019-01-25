@@ -19,13 +19,21 @@
 
         <div class="col-12">
             <div class="alert alert-primary text-center" role="alert">
-                <h4>Пост форма</h4>
+                <h4>Постановления форма</h4>
                 {% if msg %}
                     <h5>  {{ msg }}</h5>
                 {% endif %}
                 {% if raspr_num %}
                     <h5>  {{ raspr_num }}</h5>
+                    {% if print_btn %}
+                    <form action="{% url 'ordinance_print' %}" method="POST" class="" role="form">
+                        {% csrf_token %}
+                        <input type="text" value="{{ raspr_num }}" name="raspr_num" hidden>
+                        <input type="submit" class="btn btn-primary" value="Печать">
+                    </form>
                 {% endif %}
+                {% endif %}
+
             </div>
         </div>
 
@@ -37,6 +45,10 @@
                     <div class="form-group form-inline col-12 mb-3">
                         <label for="department" class="col-4">Отдел</label>
                         {{ form.department }}
+                    </div>
+                    <div class="form-group form-inline col-12 mb-3">
+                        <label for="district" class="col-4">Район</label>
+                        {{ form.district }}
                     </div>
                     <div class="form-group form-inline col-12 mb-3">
                         <label for="ordinance_date" class="col-4">Дата постановления</label>
@@ -149,9 +161,11 @@
                     <div class="col-12 text-center">
                         <input type="submit" class="btn btn-primary" value="Сохранить">
                     </div>
+
                 </div>
 
             </form>
+
         </div>
 
     </div>

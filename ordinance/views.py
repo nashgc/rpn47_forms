@@ -7,6 +7,11 @@ from bylaw.models import GlobalDocNumber
 
 from .form import OrdinanceForm
 
+import qrcode
+import base64
+from io import BytesIO
+
+
 @login_required
 def ordinance_form(request, msg='', raspr_num_1='', raspr_num_2=''):
     gdn = GlobalDocNumber.objects.get(pk=1)
@@ -14,7 +19,7 @@ def ordinance_form(request, msg='', raspr_num_1='', raspr_num_2=''):
     if raspr_num_1 and raspr_num_2:
         raspr_num = '{}/{}'.format(raspr_num_1, raspr_num_2)
         return render(request, 'ordinance/ordinance_form.html',
-                        {'form': form, 'gdn': gdn, 'msg': msg, 'raspr_num': raspr_num})
+                        {'form': form, 'gdn': gdn, 'msg': msg, 'raspr_num': raspr_num, 'print_btn': 'print_btn'})
     else:
         return render(request, 'ordinance/ordinance_form.html',
                         {'form': form, 'gdn': gdn, 'msg': msg})
@@ -32,6 +37,8 @@ def ordinance_save(request):
             ordinance = form.save(commit=False)
             if not ordinance.department:
                 ordinance.department = 'Не заполненно'
+            if not ordinance.district:
+                ordinance.district = 'Не заполненно'
             if not ordinance.check_type:
                 ordinance.check_type = 'Не заполненно'
             if not ordinance.performer:
@@ -55,3 +62,17 @@ def ordinance_save(request):
         else:
             return ordinance_form(request, msg='Форма была заполненна некорректно или произошла ошибка. Попробуйте ещё раз')
     return render(request, 'ordinance/ordinance_form.html', {'form': form})
+
+
+@login_required()
+def ordinance_print(request, raspr_num=''):
+    if request.method == 'POST':
+        obj = OrdinanceModel.objects.get(raspr_num__exact=request.POST['raspr_num'])
+        data = 'Lastname=obj.fio_official_face obj.passport_data|PayerAddress=Санкт-Петербург|OKTMO=40913000|CBC=obj.kbk|Purpose=штрафы 78-02-1-0700-18|UIN=|Sum=obj.fine_sum|Category=4815573529'
+        img = qrcode.make(data)
+
+        buffered = BytesIO()
+        img.save(buffered, format="PNG")
+
+        img_str = base64.b64encode(buffered.getvalue())
+        return render(request, 'ordinance/print_form.htm', {'ord_raw': obj, 'qrcode': img_str.decode('utf-8')})

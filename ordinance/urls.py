@@ -16,13 +16,14 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import ordinance_form, ordinance_save
+from .views import ordinance_form, ordinance_save, ordinance_print
     # , get_inn,
 
 urlpatterns = [
     # path('/<str:msg>/<slug:raspr_num_1>/<slug:raspr_num_2>', bylaw_form, name='bylaw_form_pa'),
     # path('/<str:msg>/', bylaw_form, name='bylaw_form_pa'),
     # path('/get_inn', get_inn, name='get_inn'),
+    path('/ordinance_print', ordinance_print, name='ordinance_print'),
     path('/ordinance_save', ordinance_save, name='ordinance_save'),
     path('', ordinance_form, name='ordinance_form'),
 ]

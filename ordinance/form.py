@@ -1,4 +1,4 @@
-from django.forms import ModelForm, ModelChoiceField, DateInput, Select, TextInput, DateField, CharField
+from django.forms import Form, ModelForm, ModelChoiceField, DateInput, Select, TextInput, DateField, CharField
 from .models import OrdinanceModel, FizOrUrMenu, ActivityTypeMenu, ViolationTypeMenu, KoapArticleMenu
 from bylaw.models import DistrictsMenu, DepartmentsMenu, PerformersMenu, CheckTypesMenu
 
@@ -8,6 +8,9 @@ class OrdinanceForm(ModelForm):
 
     department = ModelChoiceField(required=False, queryset=DepartmentsMenu.objects.all(), to_field_name="department",
                                   widget=Select(attrs={'id':"department", 'class': "form-control col-6"}))
+
+    district = ModelChoiceField(required=False, queryset=DistrictsMenu.objects.all(), to_field_name="district",
+                                widget=Select(attrs={'id': "district", 'class': 'form-control col-6'}))
 
     ordinance_date = DateField(required=False,
                            widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "ordinance_date"}))

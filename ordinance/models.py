@@ -46,6 +46,7 @@ class OrdinanceModel(models.Model):
 
 
     department = models.CharField(max_length=255, default='Unfilled')
+    district = models.CharField(max_length=255, default='Unfilled')
     ordinance_date = models.DateField()
     pay_date = models.DateField()
     expiration = models.CharField(max_length=255)
