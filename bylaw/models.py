@@ -121,7 +121,7 @@ class BylawModel(models.Model):
     date_proved_po = models.DateField()
     base = models.CharField(max_length=255, blank=True, null=True)
     lab_security = models.CharField(max_length=255, blank=True, null=True)
-    raspr_num = models.CharField(max_length=255, unique=True, null=True)
+    raspr_num = models.CharField(max_length=255, unique=False, null=True)
     who_created = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
