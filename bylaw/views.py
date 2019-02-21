@@ -29,8 +29,6 @@ def bylaw_save(request):
         form = BylawForm(request.POST)
         if form.is_valid():
             gdn = GlobalDocNumber.objects.get(pk=1)
-            raspr_num = form.cleaned_data['raspr_num'][:]
-            raspr_num = raspr_num.split('/')
             bylaw = form.save(commit=False)
             if not bylaw.district:
                 bylaw.district = 'Не заполненно'
@@ -47,7 +45,9 @@ def bylaw_save(request):
             raspr_num_list = bylaw.raspr_num.split('-')
             raspr_num_list[3] = str(gdn).zfill(4)
             bylaw.raspr_num = '-'.join(raspr_num_list)
+            raspr_num = bylaw.raspr_num[:]
             bylaw.save()
+            raspr_num = raspr_num.split('/')
             gdn.gdn += 1
             gdn.save()
             return bylaw_form(request, msg='Распоряжение успешно сохранено.',
