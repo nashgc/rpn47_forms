@@ -1,0 +1,14 @@
+.hidden {
+    margin-right: -50px;
+    margin-left: -0px;
+    visibility: hidden;
+    height: 0px;
+}
+
+form {
+    text-align: center;
+}
+
+.form-group {
+    margin-top: 5px;
+}

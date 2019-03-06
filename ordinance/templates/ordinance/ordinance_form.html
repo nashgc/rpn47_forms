@@ -17,7 +17,7 @@
 {% block content %}
     <div class="container">
 
-        <div class="col-12">
+        <div class="col-md-12">
             <div class="alert alert-primary text-center" role="alert">
                 <h4>Постановления форма</h4>
                 {% if msg %}
@@ -26,150 +26,191 @@
                 {% if raspr_num %}
                     <h5>  {{ raspr_num }}</h5>
                     {% if print_btn %}
-                    <form action="{% url 'ordinance_print' %}" method="POST" class="" role="form">
-                        {% csrf_token %}
-                        <input type="text" value="{{ raspr_num }}" name="raspr_num" hidden>
-                        <input type="submit" class="btn btn-primary" value="Печать">
-                    </form>
+                        <form action="{% url 'ordinance_print' %}" method="POST" class="" role="form">
+                            {% csrf_token %}
+                            <input type="text" value="{{ raspr_num }}" name="raspr_num" hidden>
+                            <input type="submit" class="btn btn-primary" value="Печать">
+                        </form>
+                    {% endif %}
                 {% endif %}
-                {% endif %}
-
             </div>
         </div>
 
-        <div class="raspor col-12 ">
-            <form action="{% url 'ordinance_save' %}" method="POST" class="form-inline align-items-start" role="form">
-                {% csrf_token %}
-                <div class="col-8 pr-0">
-
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="department" class="col-4">Отдел</label>
-                        {{ form.department }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="district" class="col-4">Район</label>
-                        {{ form.district }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="ordinance_date" class="col-4">Дата постановления</label>
-                        {{ form.ordinance_date }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="pay_date" class="col-4">Дата оплаты</label>
-                        {{ form.pay_date }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="expiration" class="col-4">Просрочка</label>
-                        {{ form.expiration }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="fact_pay_date" class="col-4">Фактическая дата оплаты</label>
-                        {{ form.fact_pay_date }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="income_receipt_date" class="col-4">Дата поступления квитанции в ТО</label>
-                        {{ form.income_receipt_date }}
-                    </div>
-
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="fio_official_face" class="col-4">ФИО Должностного лица</label>
-                        {{ form.fio_official_face }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="passport_data" class="col-4">Паспартные данные</label>
-                        {{ form.passport_data }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="inn" class="col-4">ИНН</label>
-                        {{ form.inn }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="organization" class="col-4">Организация</label>
-                        {{ form.organization }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="protocol_date" class="col-4">Дата составления протокола</label>
-                        {{ form.protocol_date }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="check_type" class="col-4">Вид проверки</label>
-                        {{ form.check_type }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="performer" class="col-4">Исполнитель</label>
-                        {{ form.performer }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="fiz_or_ur" class="col-4">Физ. или Юр. лицо</label>
-                        {{ form.fiz_or_ur }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="activity_type" class="col-4">Вид деятельности</label>
-                        {{ form.activity_type }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="violation_type" class="col-4">Вид нарушения</label>
-                        {{ form.violation_type }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="koap_article" class="col-4">Статья КоАП РФ</label>
-                        {{ form.koap_article }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="fine_sum" class="col-4">Сумма штрафа</label>
-                        {{ form.fine_sum }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="payed" class="col-4">Оплачено</label>
-                        {{ form.payed }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="debt" class="col-4">Долг</label>
-                        {{ form.debt }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="dont_take_by_court_decision" class="col-4">Не взыскивается по решению суда </label>
-                        {{ form.dont_take_by_court_decision }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="kbk" class="col-4">КБК</label>
-                        {{ form.kbk }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="kpp" class="col-4">КПП</label>
-                        {{ form.kpp }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <label for="date_proved_po" class="col-4">УИН сформирован</label>
-                        {{ form.uin_formed }}
-                    </div>
+        <div class="row hidden">
+            <div class="form-group form-inline col-md-6 mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">№</div>
                 </div>
-
-                <div class="col-4 pl-0">
-                    <div class="form-group form-inline col-12 mb-3">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">№</div>
-                        </div>
-                        {{ form.raspr_num }}
-                    </div>
-                    <div class="form-group form-inline col-12 mb-3">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">@</div>
-                        </div>
-                        {{ form.who_created }}
-                    </div>
-                    <div class="col-12 text-center">
-                        <input type="submit" class="btn btn-primary" value="Сохранить">
-                    </div>
-
+                {{ form.raspr_num }}
+            </div>
+            <div class="form-group form-inline col-md-6 mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
                 </div>
-
-            </form>
-
+                {{ form.who_created }}
+            </div>
         </div>
 
-    </div>
+        <div class="raspor col-md-12 ">
+            <form action="{% url 'ordinance_save' %}" method="POST" class="form-inline align-items-start" role="form">
+                {% csrf_token %}
+                <div class="col-md-12 pr-0">
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="department" class="col-4">Отдел</label>
+                            {{ form.department }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="district" class="col-4">Район</label>
+                            {{ form.district }}
+                        </div>
 
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="ordinance_date" class="col-4">Дата постановления</label>
+                            {{ form.ordinance_date }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="pay_date" class="col-4">Дата оплаты</label>
+                            {{ form.pay_date }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="expiration" class="col-4">Просрочка</label>
+                            {{ form.expiration }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="fact_pay_date" class="col-4">Фактическая дата оплаты</label>
+                            {{ form.fact_pay_date }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="income_receipt_date" class="col-4">Дата поступления квитанции в ТО</label>
+                            {{ form.income_receipt_date }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="fio_official_face" class="col-4">ФИО Должностного лица</label>
+                            {{ form.fio_official_face }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="passport_data" class="col-4">Паспартные данные</label>
+                            {{ form.passport_data }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="inn" class="col-4">ИНН</label>
+                            {{ form.inn }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="organization" class="col-4">Организация</label>
+                            {{ form.organization }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="protocol_date" class="col-4">Дата составления протокола</label>
+                            {{ form.protocol_date }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="check_type" class="col-4">Вид проверки</label>
+                            {{ form.check_type }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="performer" class="col-4">Исполнитель</label>
+                            {{ form.performer }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="fiz_or_ur" class="col-4">Физ. или Юр. лицо</label>
+                            {{ form.fiz_or_ur }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="activity_type" class="col-4">Вид деятельности</label>
+                            {{ form.activity_type }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="violation_type" class="col-4">Вид нарушения</label>
+                            {{ form.violation_type }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="koap_article" class="col-4">Статья КоАП РФ</label>
+                            {{ form.koap_article }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="fine_sum" class="col-4">Сумма штрафа</label>
+                            {{ form.fine_sum }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="payed" class="col-4">Оплачено</label>
+                            {{ form.payed }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="debt" class="col-4">Долг</label>
+                            {{ form.debt }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="dont_take_by_court_decision" class="col-4">Не взыскивается по решению
+                                суда </label>
+                            {{ form.dont_take_by_court_decision }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="kbk" class="col-4">КБК</label>
+                            {{ form.kbk }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="kpp" class="col-4">КПП</label>
+                            {{ form.kpp }}
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="date_proved_po" class="col-4">УИН сформирован</label>
+                            {{ form.uin_formed }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="submit" class="btn btn-primary" value="Сохранить">
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
     </div>
 
 <script>
