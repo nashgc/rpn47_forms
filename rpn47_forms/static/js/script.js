@@ -61,6 +61,7 @@ $(document).ready(function () {
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
 
+
     if(dd<10) {
     dd = '0'+dd
     }
@@ -69,20 +70,38 @@ $(document).ready(function () {
         mm = '0'+mm
     }
 
-    // bylaw
-    $("#raspr_date, #date_proved, #date_proved_po, #date_proved_c").val(yyyy + '-' + mm + '-' + dd)
-    
-    //ordinance
-    $("#ordinance_date, #pay_date, #fact_pay_date, #income_receipt_date, #protocol_date").val(yyyy + '-' + mm + '-' + dd)
 
-    // datePicker loads here
+    // get date and add 70 days
+    var newdate = new Date();
+    newdate.setDate(newdate.getDate()+70)
+    var ddd = newdate.getDate();
+    var mmm = newdate.getMonth()+1; //January is 0!
+    var yyyyy = newdate.getFullYear();
 
+    if (ddd < 10) {
+        ddd = '0' + ddd
+    }
+
+    if (mmm < 10) {
+        mmm = '0' + mmm
+    }
+
+
+    // dates field load here
     // bylaw
+    $("#raspr_date, #date_proved, #date_proved_po, #date_proved_c").val(dd + '.' + mm + '.' + yyyy)
+
+    // bylaw datapicker
     $("#raspr_date, #date_proved_po, #date_proved_c, #date_proved").datepicker({
     todayButton: new Date()
     })
 
+
     //ordinance
+    $("#ordinance_date, #fact_pay_date, #income_receipt_date, #protocol_date").val(dd + '.' + mm + '.' + yyyy)
+    $("#pay_date").val(ddd + '.' + mmm + '.' + yyyyy)
+
+    //ordinance datapicker
     $("#ordinance_date, #pay_date, #fact_pay_date, #income_receipt_date, #protocol_date").datepicker({
         todayButton: new Date()
     })

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 from .models import OrdinanceModel
-from bylaw.models import GlobalDocNumber
+from .models import GlobalDocNumber
 
 from .form import OrdinanceForm
 
