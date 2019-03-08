@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bylaw.apps.BylawConfig',
     'search.apps.SearchConfig',
     'ordinance.apps.OrdinanceConfig',
+    'references.apps.ReferencesConfig'
 ]
 
 MIDDLEWARE = [

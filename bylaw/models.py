@@ -12,65 +12,6 @@ class GlobalDocNumber(models.Model):
         verbose_name_plural = "Глобальный номер документов"
 
 
-class DistrictsMenu(models.Model):
-    district = models.CharField(max_length=255, verbose_name='Район')
-
-    def __str__(self):
-        return self.district
-
-    class Meta:
-        verbose_name_plural = "Районы меню"
-
-
-class DepartmentsMenu(models.Model):
-    department = models.CharField(max_length=255, verbose_name='Департамент')
-
-    def __str__(self):
-        return self.department
-
-    class Meta:
-        verbose_name_plural = "Департаменты меню"
-
-
-class PerformersMenu(models.Model):
-    performer = models.CharField(max_length=255, verbose_name='Исполнитель')
-
-    def __str__(self):
-        return self.performer
-
-    class Meta:
-        verbose_name_plural = "Исполнители меню"
-
-
-class CheckTypesMenu(models.Model):
-    check_type = models.CharField(max_length=255, verbose_name='Тип проверки')
-
-    def __str__(self):
-        return self.check_type
-
-    class Meta:
-        verbose_name_plural = "Тип проверок меню"
-
-class BaseMenu(models.Model):
-    base = models.CharField(max_length=255, verbose_name='Базис')
-
-    def __str__(self):
-        return self.base
-
-    class Meta:
-        verbose_name_plural = "Базис меню"
-
-
-class LabSecurityMenu(models.Model):
-    lab_security = models.CharField(max_length=255, verbose_name='Лабораторное обеспечение')
-
-    def __str__(self):
-        return self.lab_security
-
-    class Meta:
-        verbose_name_plural = "Лабораторное обеспечение меню"
-
-
 class BylawModel(models.Model):
 
     # district_list = (

@@ -1,6 +1,7 @@
-from django.forms import Form, ModelForm, ModelChoiceField, DateInput, Select, TextInput, DateField, CharField
-from .models import OrdinanceModel, FizOrUrMenu, ActivityTypeMenu, ViolationTypeMenu
-from bylaw.models import DistrictsMenu, DepartmentsMenu, PerformersMenu, CheckTypesMenu
+from django.forms import ModelForm, ModelChoiceField, DateInput, Select, TextInput, DateField, CharField
+from .models import OrdinanceModel
+from references.models import DistrictsMenu, DepartmentsMenu, PerformersMenu, CheckTypesMenu, FizOrUrMenu,\
+    ActivityTypeMenu, ViolationTypeMenu
 
 
 # TODO: disable required fields

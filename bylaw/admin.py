@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import BylawModel, CheckTypesMenu, DepartmentsMenu, DistrictsMenu, PerformersMenu, GlobalDocNumber
-from .models import BaseMenu, LabSecurityMenu
+from .models import BylawModel, GlobalDocNumber
+
 # Register your models here.
 
 
@@ -15,8 +15,8 @@ class BylawAdmin(admin.ModelAdmin):
     search_fields = ('inn', 'organization', 'raspr_num')
 
 
-bylaw_models = [
-    CheckTypesMenu, DepartmentsMenu, DistrictsMenu, PerformersMenu, GlobalDocNumber, LabSecurityMenu, BaseMenu
-]
+
 admin.site.register(BylawModel,BylawAdmin)
-admin.site.register(bylaw_models)
+admin.site.register(GlobalDocNumber)
+
+

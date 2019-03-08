@@ -1,57 +1,14 @@
 from django.db import models
 
 # Create your models here.
-
 class GlobalDocNumber(models.Model):
-    gdn = models.IntegerField(verbose_name='Глобальный номер документов')
+    gdn = models.IntegerField(verbose_name='Глобальный номер документов ')
 
     def __str__(self):
         return str(self.gdn)
 
     class Meta:
         verbose_name_plural = "Глобальный номер документов"
-
-
-class CoapKbkMenu(models.Model):
-    coap = models.CharField(max_length=255, verbose_name='Статья КоАП РФ', unique=True, db_index=True)
-    kbk = models.CharField(max_length=255, verbose_name='КБК')
-
-    def __str__(self):
-        return self.coap
-
-    class Meta:
-        verbose_name_plural = 'Статья КоАП РФ - КБК меню'
-
-
-class FizOrUrMenu(models.Model):
-    fiz_or_ur = models.CharField(max_length=255, verbose_name='Физ. или Юр. лицо')
-
-    def __str__(self):
-        return self.fiz_or_ur
-
-    class Meta:
-        verbose_name_plural = "Физ. или Юр. лицо меню"
-
-
-class ActivityTypeMenu(models.Model):
-    activity_type = models.CharField(max_length=255, verbose_name='Вид деятельности')
-
-    def __str__(self):
-        return self.activity_type
-
-    class Meta:
-        verbose_name_plural = "Вид деятельности меню"
-
-
-class ViolationTypeMenu(models.Model):
-    violation_type = models.CharField(max_length=255, verbose_name='Вид нарушения')
-
-    def __str__(self):
-        return self.violation_type
-
-    class Meta:
-        verbose_name_plural = "Вид нарушения меню"
-
 
 
 class OrdinanceModel(models.Model):
