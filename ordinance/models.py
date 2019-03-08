@@ -12,6 +12,17 @@ class GlobalDocNumber(models.Model):
         verbose_name_plural = "Глобальный номер документов"
 
 
+class CoapKbkMenu(models.Model):
+    coap = models.CharField(max_length=255, verbose_name='Статья КоАП РФ', unique=True, db_index=True)
+    kbk = models.CharField(max_length=255, verbose_name='КБК')
+
+    def __str__(self):
+        return self.coap
+
+    class Meta:
+        verbose_name_plural = 'Статья КоАП РФ - КБК меню'
+
+
 class FizOrUrMenu(models.Model):
     fiz_or_ur = models.CharField(max_length=255, verbose_name='Физ. или Юр. лицо')
 
@@ -41,15 +52,6 @@ class ViolationTypeMenu(models.Model):
     class Meta:
         verbose_name_plural = "Вид нарушения меню"
 
-
-class KoapArticleMenu(models.Model):
-    koap_article = models.CharField(max_length=255, verbose_name='Статья КоАП РФ')
-
-    def __str__(self):
-        return self.koap_article
-
-    class Meta:
-        verbose_name_plural = "Статья КоАП РФ меню"
 
 
 class OrdinanceModel(models.Model):

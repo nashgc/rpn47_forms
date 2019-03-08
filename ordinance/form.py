@@ -1,5 +1,5 @@
 from django.forms import Form, ModelForm, ModelChoiceField, DateInput, Select, TextInput, DateField, CharField
-from .models import OrdinanceModel, FizOrUrMenu, ActivityTypeMenu, ViolationTypeMenu, KoapArticleMenu
+from .models import OrdinanceModel, FizOrUrMenu, ActivityTypeMenu, ViolationTypeMenu
 from bylaw.models import DistrictsMenu, DepartmentsMenu, PerformersMenu, CheckTypesMenu
 
 
@@ -57,8 +57,7 @@ class OrdinanceForm(ModelForm):
     violation_type = ModelChoiceField(required=False, queryset=ViolationTypeMenu.objects.all(), to_field_name="violation_type",
                                  widget=Select(attrs={'id': "violation_type", 'class': 'form-control col-6'}))
 
-    koap_article = ModelChoiceField(required=False, queryset=KoapArticleMenu.objects.all(), to_field_name="koap_article",
-                                 widget=Select(attrs={'id': "koap_article", 'class': 'form-control col-6'}))
+    koap_article = CharField(required=False, widget=TextInput(attrs={'id': "koap_article", 'class': 'form-control col-6'}))
 
     fine_sum = CharField(required=False, widget=TextInput(
                 attrs={'type': "text", 'class': "form-control col-6", 'id': "fine_sum"}))

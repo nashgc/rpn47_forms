@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import OrdinanceModel, ActivityTypeMenu, FizOrUrMenu, KoapArticleMenu, ViolationTypeMenu, GlobalDocNumber
+from .models import OrdinanceModel, ActivityTypeMenu, FizOrUrMenu, ViolationTypeMenu, \
+    GlobalDocNumber, CoapKbkMenu
 
 # Register your models here.
 
@@ -11,7 +12,7 @@ class OrdinanceAdmin(admin.ModelAdmin):
     search_fields = ('inn', 'organization', 'raspr_num')
 
 ordinance_models = [
-    ActivityTypeMenu, FizOrUrMenu, KoapArticleMenu, ViolationTypeMenu, GlobalDocNumber
+    ActivityTypeMenu, FizOrUrMenu, ViolationTypeMenu, GlobalDocNumber, CoapKbkMenu
 ]
 
 admin.site.register(OrdinanceModel, OrdinanceAdmin)

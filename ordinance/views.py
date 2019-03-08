@@ -76,3 +76,5 @@ def ordinance_print(request, raspr_num=''):
 
         img_str = base64.b64encode(buffered.getvalue())
         return render(request, 'ordinance/print_form.htm', {'ord_raw': obj, 'qrcode': img_str.decode('utf-8')})
+
+
