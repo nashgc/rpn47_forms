@@ -4,12 +4,15 @@ from django.contrib.auth.decorators import login_required
 
 from .models import OrdinanceModel
 from .models import GlobalDocNumber
+from references.models import KoapKbkMenu
 
 from .form import OrdinanceForm
 
 import qrcode
 import base64
 from io import BytesIO
+
+import json
 
 
 @login_required
@@ -77,4 +80,20 @@ def ordinance_print(request, raspr_num=''):
         img_str = base64.b64encode(buffered.getvalue())
         return render(request, 'ordinance/print_form.htm', {'ord_raw': obj, 'qrcode': img_str.decode('utf-8')})
 
+
+@login_required
+def get_koap(request):
+    if request.method == "POST":
+        request = request.POST
+        print(request['search'])
+        koaps = KoapKbkMenu.objects.all().filter(koap__icontains=request['search'])
+        results = []
+        for koap in koaps:
+            place_json = {}
+            place_json['label'] = koap.koap
+            place_json['kbk'] = koap.kbk
+            results.append(place_json)
+        data = json.dumps(results)
+        mimetype = "application/json"
+        return HttpResponse(data, mimetype)
 

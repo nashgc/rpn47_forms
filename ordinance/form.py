@@ -29,7 +29,7 @@ class OrdinanceForm(ModelForm):
                            widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "income_receipt_date"}))
 
     organization = CharField(required=False, widget=TextInput(
-                attrs={'type': "text", 'class': "form-control col-6", 'id': "organization"}))
+                attrs={'type': "text", 'class': "form-control col-6 org", 'id': "organization"}))
 
     fio_official_face = CharField(required=False, widget=TextInput(
                 attrs={'type': "text", 'class': "form-control col-6", 'id': "fio_official_face"}))

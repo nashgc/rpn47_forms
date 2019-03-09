@@ -1,5 +1,6 @@
 // INN AJAX request
 
+// INN autocomplete + set organization when select
 $(document).ready(function () {
     $("#inn").autocomplete({
         minLength: 3,
@@ -9,7 +10,6 @@ $(document).ready(function () {
                 url: url,
                 processData: true,
                 type: 'POST',
-
                 data: {
                     search: request.term,
                     csrfmiddlewaretoken: csrf_token,
@@ -18,7 +18,6 @@ $(document).ready(function () {
                     // console.log(data)
                     response(data);
                 },
-
             });
         },
         select: function (event, ui) {
@@ -26,6 +25,33 @@ $(document).ready(function () {
             $('.org').val(ui.item.org)
         }
     });
+
+
+// KoAP autocomplete + set kbk when select
+    $("#koap_article").autocomplete({
+    minLength: 1,
+    source: function (request, response) {
+        var form = $(this);
+        $.ajax({
+            url: url_koap,
+            processData: true,
+            type: 'POST',
+            data: {
+                search: request.term,
+                csrfmiddlewaretoken: csrf_token,
+            },
+            success: function (data) {
+                // console.log(data)
+                response(data);
+            },
+        });
+    },
+    select: function (event, ui) {
+        // console.log(ui.item)
+        $('#kbk').val(ui.item.kbk)
+    }
+});
+
 
 // rasp_num generator
 

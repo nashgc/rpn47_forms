@@ -4,8 +4,8 @@ from django.db import models
 Ordinances menu
 '''
 
-class CoapKbkMenu(models.Model):
-    coap = models.CharField(max_length=255, verbose_name='Статья КоАП РФ', unique=True, db_index=True)
+class KoapKbkMenu(models.Model):
+    koap = models.CharField(max_length=255, verbose_name='Статья КоАП РФ', unique=True, db_index=True)
     kbk = models.CharField(max_length=255, verbose_name='КБК')
 
     def __str__(self):
