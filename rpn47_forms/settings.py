@@ -37,11 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # my apps
     'user_auth.apps.UserAuthConfig',
     'bylaw.apps.BylawConfig',
     'search.apps.SearchConfig',
     'ordinance.apps.OrdinanceConfig',
-    'references.apps.ReferencesConfig'
+    'references.apps.ReferencesConfig',
+    # external apps
+    'pure_pagination',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +139,9 @@ MEDIA_URL = '/media/'
 # Auth options
 
 
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 10,
+    'MARGIN_PAGES_DISPLAYED': 2,
+
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}

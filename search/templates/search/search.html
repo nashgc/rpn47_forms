@@ -36,8 +36,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for r in raspr %}
-                <tr>
+                {% for r  in raspr.object_list %}
+                <tr >
                     <td>{{ r.raspr_date }}</td>
                     <td>{{ r.district }}</td>
                     <td>{{ r.department }}</td>
@@ -76,6 +76,42 @@
                 </tr>
                 </tfoot>
             </table>
+{% load i18n %}
+        <nav>
+<div class="pagination">
+    {% if raspr.has_previous %}
+        <a href="?{{ raspr.previous_page_number.querystring }}" class="prev page-link">&lsaquo;&lsaquo; {% trans "previous" %}</a>
+    {% else %}
+        <li class="page-item disabled" aria-current="page">
+        <span class=" prev page-link">&lsaquo;&lsaquo; {% trans "previous" %}</span>
+        </li>
+    {% endif %}
+    {% for page in raspr.pages %}
+        {% if page %}
+
+            {% ifequal page raspr.number %}
+                            <li class="page-item active" aria-current="page">
+                <span class="current page page-link active">{{ page }}</span>
+                                             </li>
+            {% else %}
+                                            <li class="page-item" aria-current="page">
+                <a href="?{{ page.querystring }}" class="page page-link active">{{ page }}</a>
+                             </li>
+            {% endifequal %}
+
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    {% if raspr.has_next %}
+        <a href="?{{ raspr.next_page_number.querystring }}" class="next page-link">{% trans "next" %} &rsaquo;&rsaquo;</a>
+    {% else %}
+                <li class="page-item disabled" aria-current="page">
+        <span class="disabled next page-link">{% trans "next" %} &rsaquo;&rsaquo;</span>
+                </li>
+    {% endif %}
+</div>
+        </nav>
         </div>
     {% endif %}
     </div>
