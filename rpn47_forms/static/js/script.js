@@ -1,7 +1,26 @@
-// INN AJAX request
+// CSRF token
+$(document).ready(function () {
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    var csrftoken = getCookie('csrftoken');
+
 
 // INN autocomplete + set organization when select
-$(document).ready(function () {
     $("#inn").autocomplete({
         minLength: 3,
         source: function (request, response) {
@@ -12,7 +31,7 @@ $(document).ready(function () {
                 type: 'POST',
                 data: {
                     search: request.term,
-                    csrfmiddlewaretoken: csrf_token,
+                    csrfmiddlewaretoken: csrftoken,
                 },
                 success: function (data) {
                     // console.log(data)
@@ -38,7 +57,7 @@ $(document).ready(function () {
             type: 'POST',
             data: {
                 search: request.term,
-                csrfmiddlewaretoken: csrf_token,
+                csrfmiddlewaretoken: csrftoken,
             },
             success: function (data) {
                 // console.log(data)

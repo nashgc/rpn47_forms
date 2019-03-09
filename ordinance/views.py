@@ -85,7 +85,7 @@ def ordinance_print(request, raspr_num=''):
 def get_koap(request):
     if request.method == "POST":
         request = request.POST
-        print(request['search'])
+        # print(request['search'])
         koaps = KoapKbkMenu.objects.all().filter(koap__icontains=request['search'])
         results = []
         for koap in koaps:
