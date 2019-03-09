@@ -36,25 +36,28 @@
             </div>
         </div>
 
-        <div class="row hidden">
-            <div class="form-group form-inline col-md-6 mb-3">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">№</div>
-                </div>
-                {{ form.raspr_num }}
-            </div>
-            <div class="form-group form-inline col-md-6 mb-3">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">@</div>
-                </div>
-                {{ form.who_created }}
-            </div>
-        </div>
+
 
         <div class="raspor col-md-12 ">
             <form action="{% url 'ordinance_save' %}" method="POST" class="form-inline align-items-start" role="form">
                 {% csrf_token %}
                 <div class="col-md-12 pr-0">
+                    
+                    <div class="row hidden">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">№</div>
+                            </div>
+                            {{ form.raspr_num }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@</div>
+                            </div>
+                            {{ form.who_created }}
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="department" class="col-4">Отдел</label>
