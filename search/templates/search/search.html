@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block js %}
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+
 {% block content %}
     <div class="row-replace">
     {% if not_found %}
@@ -10,7 +14,7 @@
     {% endif %}
     {% if raspr %}
         <div class="container-fluid">
-            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <table id="dtBasicExample" class="table table-striped table-sm" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th class="th-sm">Дата распор
@@ -36,7 +40,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for r  in raspr.object_list %}
+                {% for r in raspr.object_list %}
                 <tr >
                     <td>{{ r.raspr_date }}</td>
                     <td>{{ r.district }}</td>
@@ -76,41 +80,43 @@
                 </tr>
                 </tfoot>
             </table>
-{% load i18n %}
+        {% load i18n %}
         <nav>
-<div class="pagination">
-    {% if raspr.has_previous %}
-        <a href="?{{ raspr.previous_page_number.querystring }}" class="prev page-link">&lsaquo;&lsaquo; {% trans "previous" %}</a>
-    {% else %}
-        <li class="page-item disabled" aria-current="page">
-        <span class=" prev page-link">&lsaquo;&lsaquo; {% trans "previous" %}</span>
-        </li>
-    {% endif %}
-    {% for page in raspr.pages %}
-        {% if page %}
+            <div class="pagination justify-content-end">
+                {% if raspr.has_previous %}
+                    <a href="?{{ raspr.previous_page_number.querystring }}"
+                       class="prev page-link">&lsaquo;&lsaquo; {% trans "previous" %}</a>
+                {% else %}
+                    <li class="page-item disabled" aria-current="page">
+                        <span class=" prev page-link">&lsaquo;&lsaquo; {% trans "previous" %}</span>
+                    </li>
+                {% endif %}
+                {% for page in raspr.pages %}
+                    {% if page %}
 
-            {% ifequal page raspr.number %}
+                        {% ifequal page raspr.number %}
                             <li class="page-item active" aria-current="page">
-                <span class="current page page-link active">{{ page }}</span>
-                                             </li>
-            {% else %}
-                                            <li class="page-item" aria-current="page">
-                <a href="?{{ page.querystring }}" class="page page-link active">{{ page }}</a>
-                             </li>
-            {% endifequal %}
+                                <span class="current page page-link active">{{ page }}</span>
+                            </li>
+                        {% else %}
+                            <li class="page-item" aria-current="page">
+                                <a href="?{{ page.querystring }}" class="page page-link active">{{ page }}</a>
+                            </li>
+                        {% endifequal %}
 
-        {% else %}
-            ...
-        {% endif %}
-    {% endfor %}
-    {% if raspr.has_next %}
-        <a href="?{{ raspr.next_page_number.querystring }}" class="next page-link">{% trans "next" %} &rsaquo;&rsaquo;</a>
-    {% else %}
-                <li class="page-item disabled" aria-current="page">
-        <span class="disabled next page-link">{% trans "next" %} &rsaquo;&rsaquo;</span>
-                </li>
-    {% endif %}
-</div>
+                    {% else %}
+                        ...
+                    {% endif %}
+                {% endfor %}
+                {% if raspr.has_next %}
+                    <a href="?{{ raspr.next_page_number.querystring }}" class="next page-link">{% trans "next" %}
+                        &rsaquo;&rsaquo;</a>
+                {% else %}
+                    <li class="page-item disabled" aria-current="page">
+                        <span class="disabled next page-link">{% trans "next" %} &rsaquo;&rsaquo;</span>
+                    </li>
+                {% endif %}
+            </div>
         </nav>
         </div>
     {% endif %}

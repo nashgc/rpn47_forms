@@ -2,7 +2,6 @@ from itertools import chain
 
 from django.shortcuts import render, HttpResponse
 from django.template.loader import render_to_string
-from django.template.context import RequestContext
 
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
@@ -33,9 +32,9 @@ def search(request):
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
             page = 1
-        paginator = Paginator(iins, 10, request=request)
+        paginator = Paginator(iins, 20, request=request)
         raspr = paginator.page(page)
-        if not raspr:
+        if not iins:
             return render(request, 'search/search.html', {'not_found': "ИНН {} не найдено".format(search_text)})
         else:
             return render(request, 'search/search.html', {'raspr': raspr})
@@ -50,10 +49,10 @@ def search(request):
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
             page = 1
-        paginator = Paginator(iins, 10, request=request)
+        paginator = Paginator(iins, 20, request=request)
         raspr = paginator.page(page)
-        # print(raspr)
-        if not raspr:
+        print(raspr)
+        if not iins:
             return render(request, 'search/search.html', {'not_found': "ИНН {} не найдено".format(search_text)})
         else:
             return render(request, 'search/search.html', {'raspr': raspr})

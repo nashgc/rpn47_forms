@@ -1,6 +1,15 @@
 // CSRF token
 $(document).ready(function () {
 
+    $('#dtBasicExample').DataTable({
+        language: {
+            search: "Сквозной фильтр: "
+        },
+        "paging": false,
+        "bInfo" : false,
+        stateSave: true,
+    });
+
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -150,6 +159,9 @@ $(document).ready(function () {
     $("#ordinance_date, #pay_date, #fact_pay_date, #income_receipt_date, #protocol_date").datepicker({
         todayButton: new Date()
     })
+
+
+
 
 });
 
