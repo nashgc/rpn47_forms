@@ -8,8 +8,8 @@
 {% endblock %}
 
 {% block js %}
-{#  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
-{#  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>#}
+    {#  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
+    {#  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>#}
     <script src="{% static 'js/datepicker.min.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
@@ -35,7 +35,6 @@
                 {% endif %}
             </div>
         </div>
-
 
 
         <div class="raspor col-md-12 ">
@@ -153,7 +152,6 @@
                     </div>
 
                     <div class="row">
-
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="violation_type" class="col-4">Вид нарушения</label>
                             {{ form.violation_type }}
@@ -162,24 +160,12 @@
                             <label for="koap_article" class="col-4">Статья КоАП РФ</label>
                             {{ form.koap_article }}
                         </div>
-
                     </div>
 
                     <div class="row">
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="fine_sum" class="col-4">Сумма штрафа</label>
                             {{ form.fine_sum }}
-                        </div>
-                        <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="payed" class="col-4">Оплачено</label>
-                            {{ form.payed }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="debt" class="col-4">Долг</label>
-                            {{ form.debt }}
                         </div>
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="dont_take_by_court_decision" class="col-4">Не взыскивается по решению
@@ -190,24 +176,38 @@
 
                     <div class="row">
                         <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="kbk" class="col-4">КБК</label>
-                            {{ form.kbk }}
+                            <label for="date_proved_po" class="col-4">УИН сформирован</label>
+                            {{ form.uin_formed }}
                         </div>
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="kpp" class="col-4">КПП</label>
                             {{ form.kpp }}
                         </div>
-
                     </div>
-                    <div class="row">
+
+                    <div class="row hidden">
                         <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="date_proved_po" class="col-4">УИН сформирован</label>
-                            {{ form.uin_formed }}
+                            <label for="payed" class="col-4">Оплачено</label>
+                            {{ form.payed }}
                         </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="debt" class="col-4">Долг</label>
+                            {{ form.debt }}
+
+                        </div>
+                    </div>
+
+                    <div class="row hidden">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="kbk" class="col-4">КБК</label>
+                            {{ form.kbk }}
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <input type="submit" class="btn btn-primary" value="Сохранить">
                         </div>
-
                     </div>
 
                 </div>
@@ -216,10 +216,10 @@
     </div>
     </div>
 
-<script>
-    var url = '{% url 'get_inn' %}'
-    var url_koap = '{% url 'get_koap' %}'
-    var gdn = '{{ gdn }}'
-</script>
+    <script>
+        var url = '{% url 'get_inn' %}'
+        var url_koap = '{% url 'get_koap' %}'
+        var gdn = '{{ gdn }}'
+    </script>
 
 {% endblock %}

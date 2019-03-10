@@ -160,6 +160,10 @@ $(document).ready(function () {
         todayButton: new Date()
     })
 
+    $("#fine_sum").bind('input', function(){
+        $("#debt").val(this.value)
+    })
+
 
 
 
