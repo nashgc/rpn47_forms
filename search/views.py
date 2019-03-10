@@ -24,9 +24,9 @@ def search(request):
     elif request.method == 'GET':
         search_text = ''
         bylaw_iins = BylawModel.objects.all().filter(inn__icontains=search_text)
-        bylaw_iins.model.model_name = bylaw_iins.model.__name__
+        bylaw_iins.model.model_name = 'Распоряжение'
         ordinance_iins = OrdinanceModel.objects.all().filter(inn__icontains=search_text)
-        ordinance_iins.model.model_name = ordinance_iins.model.__name__
+        ordinance_iins.model.model_name = 'Постановление'
         iins = list(chain(bylaw_iins, ordinance_iins))
         try:
             page = request.GET.get('page', 1)
@@ -41,9 +41,9 @@ def search(request):
     else:
         search_text = request.POST['search']
         bylaw_iins = BylawModel.objects.all().filter(inn__icontains=search_text)
-        bylaw_iins.model.model_name = bylaw_iins.model.__name__
+        bylaw_iins.model.model_name = 'Распоряжение'
         ordinance_iins = OrdinanceModel.objects.all().filter(inn__icontains=search_text)
-        ordinance_iins.model.model_name = ordinance_iins.model.__name__
+        ordinance_iins.model.model_name = 'Постановление'
         iins = list(chain(bylaw_iins, ordinance_iins))
         try:
             page = request.GET.get('page', 1)
