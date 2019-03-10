@@ -84,7 +84,7 @@ class OrdinanceForm(ModelForm):
 
     class Meta:
         model = OrdinanceModel
-        fields = ['department', 'ordinance_date', 'pay_date', 'expiration', 'fact_pay_date',
+        fields = ['department', 'district', 'ordinance_date', 'pay_date', 'expiration', 'fact_pay_date',
                   'income_receipt_date', 'organization', 'fio_official_face', 'passport_data', 'inn',
                   'protocol_date', 'check_type', 'performer', 'fiz_or_ur', 'activity_type', 'violation_type',
                   'koap_article', 'fine_sum', 'payed', 'debt', 'dont_take_by_court_decision', 'kbk',

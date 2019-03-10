@@ -14,8 +14,8 @@ class GlobalDocNumber(models.Model):
 class OrdinanceModel(models.Model):
 
 
-    department = models.CharField(max_length=255, default='Unfilled')
-    district = models.CharField(max_length=255, default='Unfilled')
+    department = models.CharField(max_length=255)
+    district = models.CharField(max_length=255)
     ordinance_date = models.DateField()
     pay_date = models.DateField()
     expiration = models.CharField(max_length=255)
