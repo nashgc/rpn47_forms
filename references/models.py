@@ -9,7 +9,7 @@ class KoapKbkMenu(models.Model):
     kbk = models.CharField(max_length=255, verbose_name='КБК')
 
     def __str__(self):
-        return self.coap
+        return self.koap
 
     class Meta:
         verbose_name_plural = 'Статья КоАП РФ - КБК меню'
