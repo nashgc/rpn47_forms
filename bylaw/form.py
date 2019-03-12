@@ -8,10 +8,10 @@ class BylawForm(ModelForm):
     raspr_date = DateField(required=False,
                            widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "raspr_date"}))
 
-    district = ModelChoiceField(required=False, queryset=DistrictsMenu.objects.all(), to_field_name="district",
+    district = ModelChoiceField(required=True, queryset=DistrictsMenu.objects.all(), to_field_name="district",
                                 widget=Select(attrs={'id': "district", 'class': 'form-control col-6'}))
 
-    department = ModelChoiceField(required=False, queryset=DepartmentsMenu.objects.all(), to_field_name="department",
+    department = ModelChoiceField(required=True, queryset=DepartmentsMenu.objects.all(), to_field_name="department",
                                   widget=Select(attrs={'id':"department", 'class': "form-control col-6"}))
 
     organization = CharField(required=False, widget=TextInput(
