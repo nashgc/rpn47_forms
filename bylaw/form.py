@@ -18,7 +18,7 @@ class BylawForm(ModelForm):
                 attrs={'type': "text", 'class': "form-control col-6 org", 'id': "organization"}))
 
     inn = CharField(required=True, widget=TextInput(
-                attrs={'type': "text", 'class': "form-control col-6", 'id': "inn"}))
+                attrs={'type': "text", 'minlength': '10', 'maxlength': '12', 'class': "form-control col-6", 'id': "inn"}))
 
     performer = ModelChoiceField(required=False, queryset=PerformersMenu.objects.all(), to_field_name="performer",
                                  widget=Select(attrs={'id': "performer", 'class': 'form-control col-6'}))

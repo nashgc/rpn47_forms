@@ -38,7 +38,7 @@ class OrdinanceForm(ModelForm):
                 attrs={'type': "text", 'class': "form-control col-6", 'id': "passport_data"}))
 
     inn = CharField(required=True, widget=TextInput(
-                attrs={'type': "text", 'class': "form-control col-6", 'id': "inn"}))
+                attrs={'type': "text", 'minlength': '10', 'maxlength': '12', 'class': "form-control col-6", 'id': "inn"}))
 
     protocol_date = DateField(required=False,
                            widget=DateInput(attrs={'type': "text", 'class': "form-control col-6", 'id': "protocol_date"}))
