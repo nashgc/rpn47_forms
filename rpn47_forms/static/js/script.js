@@ -88,7 +88,8 @@ $(document).ready(function () {
     var reg = '78'
     var district_code = '__'
     var department_code = '__'
-    var doc_type = '19'
+    var doc_type_bylaw = '19'
+    var doc_type_ordinance = '24'
     var adm_num_calc = parseInt(gdn)
     var adm_number = ("0000" + adm_num_calc).slice(-4)
     var year = (new Date()).getFullYear()
@@ -106,7 +107,8 @@ $(document).ready(function () {
     })
 
 
-    $("#raspr_num").val(reg+dash+district_code+dash+department_code+slash+doc_type+dash+adm_number+dash+year)
+    $("#raspr_num_bylaw").val(reg+dash+district_code+dash+department_code+slash+doc_type_bylaw+dash+adm_number+dash+year)
+    $("#raspr_num_ordinance").val(reg+dash+district_code+dash+department_code+slash+doc_type_ordinance+dash+adm_number+dash+year)
 
 
     // get and set current date

@@ -92,7 +92,7 @@ class OrdinanceForm(ModelForm):
         ]
         widgets = {
             'raspr_num': TextInput(
-                attrs={'type': "text", 'class': "form-control col-10", 'id': "raspr_num", 'readonly': ''}
+                attrs={'type': "text", 'class': "form-control col-10", 'id': "raspr_num_ordinance", 'readonly': ''}
             ),
             'who_created': TextInput(
                 attrs={'type': "text", 'class': "form-control col-10", 'id': "who_created", 'readonly': ''}

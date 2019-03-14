@@ -61,7 +61,7 @@ class BylawForm(ModelForm):
             #     attrs={'type': "text", 'class': "form-control col-6", 'id': "date_proved", 'required':"false"}
             # ),
             'raspr_num': TextInput(
-                attrs={'type': "text", 'class': "form-control col-10", 'id': "raspr_num", 'readonly': ''}
+                attrs={'type': "text", 'class': "form-control col-10", 'id': "raspr_num_bylaw", 'readonly': ''}
             ),
             'who_created': TextInput(
                 attrs={'type': "text", 'class': "form-control col-10", 'id': "who_created", 'readonly': ''}
