@@ -83,32 +83,46 @@ $(document).ready(function () {
 
 // rasp_num generator
 
-    var dash = '-'
-    var slash = '/'
-    var reg = '78'
-    var district_code = '__'
-    var department_code = '__'
-    var doc_type_bylaw = '19'
-    var doc_type_ordinance = '24'
-    var adm_num_calc = parseInt(gdn)
-    var adm_number = ("0000" + adm_num_calc).slice(-4)
-    var year = (new Date()).getFullYear()
+    var dash = '-';
+    var slash = '/';
+    var reg = '78';
+    var district_code = '__';
+    var department_code = '__';
+    var doc_type_bylaw = '19';
+    var doc_type_ordinance = '24';
+    var adm_num_calc = parseInt(gdn);
+    var adm_number = ("0000" + adm_num_calc).slice(-4);
+    var year = (new Date()).getFullYear();
+
+
+    var x = doc_type;
+    switch (x) {
+        case 'bylaw':
+            var dt = doc_type_bylaw;
+            break;
+        case 'ordinance':
+            var dt = doc_type_ordinance;
+            break;
+        default:
+            alert('Ошибка! Тип шаблона не определен. Обновите страницу и попробуйте снова. \n' +
+                'Если ошибка повторяется обратитесь к системному администратору.');
+            $('#save_form').attr('disabled', 'disabled');
+    };
 
 
     $("#district").on('change', function () {
         district_code = this.value.substring(0,2)
-        $("#raspr_num").val(reg+dash+district_code+dash+department_code+slash+doc_type+dash+adm_number+dash+year)
-    })
+        $("#raspr_num").val(reg+dash+district_code+dash+department_code+slash+dt+dash+adm_number+dash+year)
+    });
 
 
     $("#department").on('change', function () {
         department_code = this.value.substring(0,2)
-        $("#raspr_num").val(reg+dash+district_code+dash+department_code+slash+doc_type+dash+adm_number+dash+year)
-    })
+        $("#raspr_num").val(reg+dash+district_code+dash+department_code+slash+dt+dash+adm_number+dash+year)
+    });
 
 
-    $("#raspr_num_bylaw").val(reg+dash+district_code+dash+department_code+slash+doc_type_bylaw+dash+adm_number+dash+year)
-    $("#raspr_num_ordinance").val(reg+dash+district_code+dash+department_code+slash+doc_type_ordinance+dash+adm_number+dash+year)
+    $("#raspr_num").val(reg+dash+district_code+dash+department_code+slash+dt+dash+adm_number+dash+year);
 
 
     // get and set current date
@@ -129,7 +143,7 @@ $(document).ready(function () {
 
     // get date and add 70 days
     var newdate = new Date();
-    newdate.setDate(newdate.getDate()+70)
+    newdate.setDate(newdate.getDate()+70);
     var ddd = newdate.getDate();
     var mmm = newdate.getMonth()+1; //January is 0!
     var yyyyy = newdate.getFullYear();
@@ -145,26 +159,26 @@ $(document).ready(function () {
 
     // dates field load here
     // bylaw
-    $("#raspr_date, #date_proved, #date_proved_po, #date_proved_c").val(dd + '.' + mm + '.' + yyyy)
+    $("#raspr_date, #date_proved, #date_proved_po, #date_proved_c").val(dd + '.' + mm + '.' + yyyy);
 
     // bylaw datapicker
     $("#raspr_date, #date_proved_po, #date_proved_c, #date_proved").datepicker({
     todayButton: new Date()
-    })
+    });
 
 
     //ordinance
-    $("#ordinance_date, #fact_pay_date, #income_receipt_date, #protocol_date").val(dd + '.' + mm + '.' + yyyy)
-    $("#pay_date").val(ddd + '.' + mmm + '.' + yyyyy)
+    $("#ordinance_date, #fact_pay_date, #income_receipt_date, #protocol_date").val(dd + '.' + mm + '.' + yyyy);
+    $("#pay_date").val(ddd + '.' + mmm + '.' + yyyyy);
 
     //ordinance datapicker
     $("#ordinance_date, #pay_date, #fact_pay_date, #income_receipt_date, #protocol_date").datepicker({
         todayButton: new Date()
-    })
+    });
 
     $("#fine_sum").bind('input', function(){
         $("#debt").val(this.value)
-    })
+    });
 
 
 
