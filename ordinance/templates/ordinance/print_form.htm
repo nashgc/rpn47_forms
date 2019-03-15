@@ -623,10 +623,10 @@ align=center x:publishsource="Excel">
   <td class=xl8318948 width=506 style='width:380pt'><a name="RANGE!C8">ФИО
   ПЛАТЕЛЬЩИКА:
       {% with fiz_or_ur=ord_raw.fiz_or_ur %}
-          {% if fiz_or_ur == 'Индивидуальный предприниматель' or 'Юридические лица' or 'Должностное лицо' %}
-              {{ ord_raw.organization }}
-          {% else %}
+          {% if fiz_or_ur == 'Физическое лицо' %}
               {{ ord_raw.fio_official_face }} {{ ord_raw.passport_data }}
+          {% else %}
+              {{ ord_raw.organization }}
           {% endif %}
       {% endwith %}
       ;
@@ -726,10 +726,10 @@ align=center x:publishsource="Excel">
   <td class=xl9118948 width=506 style='border-left:none;width:380pt'>ФИО
   ПЛАТЕЛЬЩИКА:
       {% with fiz_or_ur=ord_raw.fiz_or_ur %}
-          {% if fiz_or_ur == 'Индивидуальный предприниматель' or 'Юридические лица' or 'Должностное лицо' %}
-              {{ ord_raw.organization }}
-          {% else %}
+          {% if fiz_or_ur == 'Физическое лицо' %}
               {{ ord_raw.fio_official_face }} {{ ord_raw.passport_data }}
+          {% else %}
+              {{ ord_raw.organization }}
           {% endif %}
       {% endwith %}
       ; АДРЕС ПЛАТЕЛЬЩИКА: Санкт-Петербург; ОКТМО: 40913000; КБК:

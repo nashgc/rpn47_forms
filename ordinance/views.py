@@ -71,10 +71,10 @@ def ordinance_save(request):
 def ordinance_print(request, raspr_num=''):
     if request.method == 'POST':
         obj = OrdinanceModel.objects.get(raspr_num__exact=request.POST['raspr_num'])
-        if obj.fiz_or_ur == 'Индивидуальный предприниматель' or 'Юридические лица' or 'Должностное лицо':
-            fiz_or_ur_data = obj.organization
-        else:
+        if obj.fiz_or_ur == 'Физическое лицо':
             fiz_or_ur_data = '{} {}'.format(obj.fio_official_face, obj.passport_data)
+        else:
+            fiz_or_ur_data = obj.organization
         data = 'Lastname={}|PayerAddress=Санкт-Петербург|OKTMO=40913000|CBC=obj.kbk|' \
                'Purpose=штрафы {}|UIN=|Sum=obj.fine_sum|Category=4815573529'.format(fiz_or_ur_data, obj.raspr_num)
         img = qrcode.make(data)
