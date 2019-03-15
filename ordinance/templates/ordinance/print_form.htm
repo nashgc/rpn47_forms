@@ -621,9 +621,17 @@ align=center x:publishsource="Excel">
   <td height=69 class=xl7518948 style='height:51.75pt'>&nbsp;</td>
   <td class=xl7818948>&nbsp;</td>
   <td class=xl8318948 width=506 style='width:380pt'><a name="RANGE!C8">ФИО
-  ПЛАТЕЛЬЩИКА: {{ ord_raw.fio_official_face }} {{ ord_raw.passport_data }};
+  ПЛАТЕЛЬЩИКА:
+      {% with fiz_or_ur=ord_raw.fiz_or_ur %}
+          {% if fiz_or_ur == 'Индивидуальный предприниматель' or 'Юридические лица' or 'Должностное лицо' %}
+              {{ ord_raw.organization }}
+          {% else %}
+              {{ ord_raw.fio_official_face }} {{ ord_raw.passport_data }}
+          {% endif %}
+      {% endwith %}
+      ;
   АДРЕС ПЛАТЕЛЬЩИКА: Санкт-Петербург; ОКТМО: 40913000; КБК:
-  {{ ord_raw.kbk }}; НАЗНАЧЕНИЕ ПЛАТЕЖА: штрафы 78-02-1-0696-18; УИН:<span
+  {{ ord_raw.kbk }}; НАЗНАЧЕНИЕ ПЛАТЕЖА: штрафы {{ ord_raw.raspr_num }}; УИН:<span
   style='mso-spacerun:yes'> </span></a></td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
@@ -716,8 +724,16 @@ align=center x:publishsource="Excel">
   <td height=69 class=xl7518948 style='height:51.75pt'>&nbsp;</td>
   <td class=xl7818948>&nbsp;</td>
   <td class=xl9118948 width=506 style='border-left:none;width:380pt'>ФИО
-  ПЛАТЕЛЬЩИКА: {{ ord_raw.fio_official_face }} {{ ord_raw.passport_data }}; АДРЕС ПЛАТЕЛЬЩИКА: Санкт-Петербург; ОКТМО: 40913000; КБК:
-  {{ ord_raw.kbk }}; НАЗНАЧЕНИЕ ПЛАТЕЖА: штрафы 78-02-1-0696-18; УИН:<span
+  ПЛАТЕЛЬЩИКА:
+      {% with fiz_or_ur=ord_raw.fiz_or_ur %}
+          {% if fiz_or_ur == 'Индивидуальный предприниматель' or 'Юридические лица' or 'Должностное лицо' %}
+              {{ ord_raw.organization }}
+          {% else %}
+              {{ ord_raw.fio_official_face }} {{ ord_raw.passport_data }}
+          {% endif %}
+      {% endwith %}
+      ; АДРЕС ПЛАТЕЛЬЩИКА: Санкт-Петербург; ОКТМО: 40913000; КБК:
+  {{ ord_raw.kbk }}; НАЗНАЧЕНИЕ ПЛАТЕЖА: штрафы {{ ord_raw.raspr_num }}; УИН:<span
   style='mso-spacerun:yes'> </span></td>
  </tr>
  <tr height=21 style='height:15.75pt'>
