@@ -60,7 +60,7 @@ def ordinance_save(request):
             ordinance.save()
             gdn.gdn += 1
             gdn.save()
-            return ordinance_form(request, msg='Распоряжение успешно сохранено.',
+            return ordinance_form(request, msg='Постановление успешно сохранено.',
                                   raspr_num_1=raspr_num[0], raspr_num_2=raspr_num[1])
         else:
             return ordinance_form(request, msg='Форма была заполненна некорректно или произошла ошибка. Попробуйте ещё раз')
