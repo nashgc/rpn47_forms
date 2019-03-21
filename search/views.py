@@ -28,7 +28,7 @@ def search(request):
         ordinance_iins = OrdinanceModel.objects.all().filter(inn__icontains=search_text)
         ordinance_iins.model.model_name = 'Постановление'
         iins = list(chain(bylaw_iins, ordinance_iins))
-        print(iins)
+        # print(iins)
         if not iins:
             return render(request, 'search/search.html', {'not_found': "ИНН {} не найдено".format(search_text)})
         else:
