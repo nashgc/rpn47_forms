@@ -43,10 +43,30 @@
                     </th>
                     <th class="th-sm">№ распоряжения
                     </th>
+
+
+                    <th class="th-sm">Дата постановления
+                    </th>
+                    <th class="th-sm">ФИО Должностного лица
+                    </th>
+                    <th class="th-sm">Паспартные данные
+                    </th>
+                    <th class="th-sm">Дата составления протокола
+                    </th>
+                    <th class="th-sm">Физ. или Юр. лицо
+                    </th>
+                    <th class="th-sm">Вид деятельности
+                    </th>
+                    <th class="th-sm">Вид нарушения
+                    </th>
+                    <th class="th-sm">Статья КоАП РФ
+                    </th>
+                    <th class="th-sm">Сумма штрафа
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for r in raspr.object_list %}
+                {% for r in raspr %}
                 <tr >
                     <td>{{ r.model_name }}</td>
                     <td class="text-center">
@@ -70,6 +90,16 @@
                     <td>{{ r.date_proved_po }}</td>
                     <td>{{ r.base }}</td>
                     <td>{{ r.raspr_num }}</td>
+
+                    <td>{{ r.ordinance_date }}</td>
+                    <td>{{ r.fio_official_face }}</td>
+                    <td>{{ r.passport_data }}</td>
+                    <td>{{ r.protocol_date }}</td>
+                    <td>{{ r.fiz_or_ur }}</td>
+                    <td>{{ r.activity_type }}</td>
+                    <td>{{ r.violation_type }}</td>
+                    <td>{{ r.koap_article }}</td>
+                    <td>{{ r.fine_sum }}</td>
                 </tr>
                 {% endfor %}
                 </tbody>
@@ -101,6 +131,25 @@
                     <th class="th-sm">Вид проверки (цель)
                     </th>
                     <th class="th-sm">№ распоряжения
+                    </th>
+
+                    <th class="th-sm">Дата постановления
+                    </th>
+                    <th class="th-sm">ФИО Должностного лица
+                    </th>
+                    <th class="th-sm">Паспартные данные
+                    </th>
+                    <th class="th-sm">Дата составления протокола
+                    </th>
+                    <th class="th-sm">Физ. или Юр. лицо
+                    </th>
+                    <th class="th-sm">Вид деятельности
+                    </th>
+                    <th class="th-sm">Вид нарушения
+                    </th>
+                    <th class="th-sm">Статья КоАП РФ
+                    </th>
+                    <th class="th-sm">Сумма штрафа
                     </th>
                 </tr>
                 </tfoot>
