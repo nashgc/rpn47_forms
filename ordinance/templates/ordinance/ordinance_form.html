@@ -58,43 +58,9 @@
                     </div>
 
                     <div class="row">
-
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="ordinance_date" class="col-4">Дата постановления</label>
                             {{ form.ordinance_date }}
-                        </div>
-                        <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="district" class="col-4">Район</label>
-                            {{ form.district }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="department" class="col-4">Отдел</label>
-                            {{ form.department }}
-                        </div>
-                        <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="inn" class="col-4">ИНН</label>
-                            {{ form.inn }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="organization" class="col-4">Организация</label>
-                            {{ form.organization }}
-                        </div>
-                        <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="fio_official_face" class="col-4">ФИО Должностного лица</label>
-                            {{ form.fio_official_face }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group form-inline col-md-6 mb-3">
-                            <label for="passport_data" class="col-4">Паспартные данные</label>
-                            {{ form.passport_data }}
                         </div>
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="protocol_date" class="col-4">Дата составления протокола</label>
@@ -104,8 +70,19 @@
 
                     <div class="row">
                         <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="district" class="col-4">Район</label>
+                            {{ form.district }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
                             <label for="check_type" class="col-4">Вид проверки</label>
                             {{ form.check_type }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="department" class="col-4">Отдел</label>
+                            {{ form.department }}
                         </div>
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="performer" class="col-4">Исполнитель</label>
@@ -115,20 +92,41 @@
 
                     <div class="row">
                         <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="inn" class="col-4">ИНН</label>
+                            {{ form.inn }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
                             <label for="fiz_or_ur" class="col-4">Физ. или Юр. лицо</label>
                             {{ form.fiz_or_ur }}
+                        </div>
+                      </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="organization" class="col-4">Организация</label>
+                            {{ form.organization }}
                         </div>
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="activity_type" class="col-4">Вид деятельности</label>
                             {{ form.activity_type }}
                         </div>
-
                     </div>
 
                     <div class="row">
                         <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="fio_official_face" class="col-4">ФИО Должностного лица</label>
+                            {{ form.fio_official_face }}
+                        </div>
+                        <div class="form-group form-inline col-md-6 mb-3">
                             <label for="violation_type" class="col-4">Вид нарушения</label>
                             {{ form.violation_type }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                            <label for="passport_data" class="col-4">Паспартные данные</label>
+                            {{ form.passport_data }}
                         </div>
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="koap_article" class="col-4">Статья КоАП РФ</label>
@@ -137,6 +135,8 @@
                     </div>
 
                     <div class="row">
+                        <div class="form-group form-inline col-md-6 mb-3">
+                        </div>
                         <div class="form-group form-inline col-md-6 mb-3">
                             <label for="fine_sum" class="col-4">Сумма штрафа</label>
                             {{ form.fine_sum }}
@@ -200,6 +200,8 @@
                     </div>
 
                     <div class="row">
+                        <div class="col-md-6 mb-3">
+                        </div>
                         <div class="col-md-6 mb-3">
                             <input type="submit" class="btn btn-primary" id="save_form" value="Сохранить">
                         </div>
