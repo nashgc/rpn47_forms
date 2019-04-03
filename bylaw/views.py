@@ -63,13 +63,16 @@ def get_inn(request):
     if request.method == "POST":
         request = request.POST
         # print(request['search'])
-        iins = BylawModel.objects.all().filter(inn__icontains=request['search'])
+        iins = BylawModel.objects.filter(inn__contains=request['search'])
+        print(iins)
         results = []
         for inn in iins:
-            place_json = {}
-            place_json['label'] = inn.inn
-            place_json['org'] = inn.organization
-            results.append(place_json)
+            if not any(item['label'] == inn.inn for item in results):
+                place_json = {}
+                place_json['label'] = inn.inn
+                place_json['org'] = inn.organization
+                results.append(place_json)
+        print(results)
         data = json.dumps(results)
         mimetype = "application/json"
         return HttpResponse(data, mimetype)
